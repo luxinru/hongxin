@@ -1,0 +1,305 @@
+.investment-record-detail-container {
+    height: 100%;
+    background-color: #FC6A42;
+    font-family: PingFang SC;
+    padding-bottom: 30px;
+	.zhye{
+		padding: 10px 30px;
+		width: 372px;
+		height: 230px;
+		background: url(./images/tb.png) no-repeat;
+		background-size: contain;
+	}
+	.apply-form-item {
+	    display: flex;
+	    padding: 12px 0;
+	    border-bottom: 1px solid #E9EAEC;
+	    font-size: 15px;
+	    &:last-child {
+	        border-bottom: none;
+	    }
+	    &-title {
+	        // width: 60px;
+	        color: #808080;
+	        margin-right: 60px;
+	    }
+	    &-info {
+	        flex: 1;
+	        text-align: right;
+	        color: #000000;
+	        .item-info {
+	            /deep/.van-stepper__input {
+	                min-width: 80px;
+	            }
+	            /deep/.van-stepper__minus {
+	                color: #000000;
+	                margin-right: 9px;
+	                background-color: transparent;
+	                border: 1px solid transparent;
+	            }
+	            /deep/.van-stepper__plus {
+	                color: #000000;
+	                margin-left: 9px;
+	                background-color: transparent;
+	                border: 1px solid transparent;
+	            }
+	        }
+	    }
+	}
+    .record-detail-header-box {
+        background: linear-gradient(39deg, #1D3AF6 0%, #2B77FC 100%);
+        padding: 45px 31px 24px;
+        .header-top {
+            text-align: center;
+            padding-bottom: 28px;
+            &-money {
+                font-size: 27px;
+                font-family: DIN Alternate;
+                font-weight: bold;
+                color: #FFFFFF;
+                padding-bottom: 13px;
+            }
+            &-text {
+                font-size: 15px;
+                font-family: PingFang SC;
+                font-weight: 500;
+                color: #FFFFFF;
+            }
+        }
+        .header-bottom {
+            background: rgba(255, 255, 255, .2);
+            border-radius: 7px;
+            padding: 22px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            &-item {
+                font-size: 13px;
+                font-weight: 500;
+                color: #FFFFFF;
+                .header-title {
+                    padding-bottom: 14px;
+                }
+            }
+        }
+    }
+    .record-detail-list {
+        padding: 10px 10px;
+        .record-detail-list-box {
+            .investment-list-box {
+                display: flex;
+                justify-content: space-between;
+                padding-bottom: 4px;
+                .investment-list-line {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    padding-right: 10px;
+                    text-align: center;
+                    &-top {
+                        width: 8px;
+                        height: 8px;
+                        border: 2px solid #B7B7B7;
+                        border-radius: 50%;
+                        margin-bottom: 4px;
+                    }
+                    &-bottom {
+                        height: calc(~'100% - 8px');
+                        border-left: 2px dashed #B7B7B7;
+                    }
+                }
+                .investment-list-info-box {
+					// width: 349px;
+					// height: 207px;
+					width: 100%;
+					background: #FFFFFF;
+					box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.09);
+					border-radius: 7px;
+                    flex: 1;
+                    .list-info-top {
+						padding: 18px 21px;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding-bottom: 15px;
+						border-bottom: 1px solid #E9EAEC;
+                        &-left {
+                            flex: 1;
+                            font-size: 13px;
+                            font-weight: 500;
+                            color: #6F6D70;
+                        }
+                        &-right {
+                            width: auto;
+                            font-size: 13px;
+                            font-weight: 500;
+                            color:#FC7D4F;
+                        }
+                    }
+                }
+                .investment-list-info {
+                    flex: 1;
+                    background: #FFFFFF;
+                    border-radius: 7px;
+                    padding: 15px 15px 16px 17px;
+                    margin-bottom: 17px;
+                    .project-name-box {
+                        display: flex;
+                        .project-name {
+                            flex: 1;
+                            padding-right: 10px;
+                            font-size: 15px;
+                            line-height: 18px;
+                            font-weight: bold;
+                            color: #094756;
+                            padding-bottom: 10px;
+                        }
+                        .status-icon {
+                            width: 21px;
+                            height: 21px;
+                            background-image: url("./../../assets/images/shufeng/project/project-1.png");
+                            background-repeat: no-repeat;
+                            background-size: cover;
+                        }
+                    }
+
+                    .project-tag-box {
+                        display: flex;
+                        align-items: center;
+                        padding-bottom: 25px;
+                        .project-tag {
+                            height: 21px;
+                            padding: 0 10px;
+                            text-align: center;
+                            line-height: 19px;
+                            background: #FF7C4C;
+                            // border: 1px solid #0F79FF;
+                            border-radius: 11px;
+                            font-size: 11px;
+                            font-weight: 500;
+                            color: #fff;
+                        }
+                    }
+                    .project-money {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        &.one {
+                            padding-bottom: 12px;
+                        }
+                        &-left {
+                            font-size: 13px;
+                            font-weight: 500;
+                            color: #2D2D2D;
+                        }
+                        &-right {
+                            font-size: 13px;
+                            font-weight: 500;
+                            text-decoration: underline;
+                            color: #023EFE;
+                        }
+                    }
+					.tlp{
+						display: flex;
+						flex-direction: row;
+						justify-content: center;
+						.project-money{
+							width: 167px;
+							display: flex;
+							flex-direction: column;
+							&-left{
+								font-size: 12px;
+								font-family: PingFang SC;
+								font-weight: 500;
+								color: #BDBEC7;
+							}
+							span{
+							font-size: 18px;
+							font-family: JDZhengHT;
+							font-weight: 400;
+							color: #FF4E19;	
+							margin-top:12px ;
+							}
+						}
+					}
+                }
+            }
+        }
+    }
+    .record-detail-list-item{
+        background-color: #FFFFFF;
+        border-radius: 13px;
+        margin-top: 15px;
+        padding: 15px 67px 19px 18px;
+        position: relative;
+        overflow: hidden;
+        .top{
+            display: flex;
+            align-items: center;
+            .top-num{
+                background-color: #D6E9FE;
+                border: 1px solid #0F79FF;
+                border-radius: 3px;
+                line-height: 20px;
+                padding: 0 8px;
+                font-size: 12px;
+                font-weight: 500;
+                color: #0F79FF;
+                flex-shrink: 0;
+            }
+            .top-title{
+                font-size: 15px;
+                font-weight: bold;
+                color: #000000;
+                margin-left: 9px;
+            }
+        }
+        .middle{
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            font-weight: 500;
+            margin-top: 13px;
+            .middle-time{
+                color: #6F6D70;
+            }
+            .middle-status{
+                color: #0F79FF;
+                margin-left: 8px;
+            }
+        }
+        .bottom{
+            display: flex;
+            justify-content: space-between;
+            margin-top: 17px;
+            .bottom-left, .bottom-right{
+                text-align: center;
+                .bottom-money{
+                    font-size: 21px;
+                    font-family: DIN Alternate;
+                    font-weight: bold;
+                    color: #0F79FF;
+                }
+                .bottom-title{
+                    font-size: 12px;
+                    font-weight: 500;
+                    color: #6F6D70;
+                    margin-top: 7px;
+                }
+            }
+        }
+        .list-item-right{
+            position: absolute;
+            width: 100px;
+            line-height: 20px;
+            background-color: #0F79FF;
+            text-align: center;
+            top: 10px;
+            right: -30px;
+            transform: rotate(45deg);
+            font-size: 12px;
+            font-weight: 500;
+            color: #FFFFFF;
+        }
+    }
+}

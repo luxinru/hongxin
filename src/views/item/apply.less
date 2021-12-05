@@ -1,0 +1,198 @@
+
+.apply-container {
+    padding-bottom: 30px;
+    font-family: PingFang SC;
+    background-color: #FC6A42;
+	.zhye{
+		padding: 20px;
+		width: 372px;
+		height: 230px;
+		background: url(./images/tb.png) no-repeat;
+		background-size: contain;
+	}
+	.apply-form-item {
+	    display: flex;
+	    padding: 15px 0;
+	    border-bottom: 1px solid #E9EAEC;
+	    font-size: 15px;
+	    &:last-child {
+	        border-bottom: none;
+	    }
+	    &-title {
+	        // width: 60px;
+	        color: #414141;
+	        margin-right: 60px;
+	    }
+	    &-info {
+	        flex: 1;
+	        text-align: right;
+	        color: #000000;
+	        .item-info {
+	            /deep/.van-stepper__input {
+	                min-width: 80px;
+	            }
+	            /deep/.van-stepper__minus {
+	                color: #000000;
+	                margin-right: 9px;
+	                background-color: transparent;
+	                border: 1px solid transparent;
+	            }
+	            /deep/.van-stepper__plus {
+	                color: #000000;
+	                margin-left: 9px;
+	                background-color: transparent;
+	                border: 1px solid transparent;
+	            }
+	        }
+	    }
+	}
+    .apply-header {
+        background: linear-gradient(39deg, #1D3AF6 0%, #2B77FC 100%);
+        margin-bottom: 10px;
+        font-size: 15px;
+        font-family: PingFang SC;
+        font-weight: 500;
+        color: #FFFFFF;
+        padding-top: 45px;
+        padding-bottom: 80px;
+        text-align: center;
+        .available-money {
+            font-size: 27px;
+            font-family: DIN Alternate;
+            font-weight: bold;
+            color: #FFFFFF;
+            padding-bottom: 13px;
+        }
+    }
+    .apply-form-container {
+        padding: 0 8px;
+        margin-top: 10px;
+        .apply-form-top {
+            height: 12px;
+            background: #102691;
+            border-radius: 6px;
+        }
+        .apply-form-box {
+            margin: -6px 5px 23px;
+            background: #FFFFFF;
+           box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.09);
+           border-radius: 7px;
+            .apply-form-money {
+                text-align: center;
+                &-title {
+                    width: 94px;
+                    height: 29px;
+					line-height: 29px;
+                    background: linear-gradient(-39deg, #FFD07C 0%, #FFE1AC 100%);
+                    border-radius: 7px;
+					font-size: 13px;
+					font-family: PingFang SC;
+					font-weight: 500;
+					color: #A25D21;
+                }
+                &-sub-title {
+                    font-size: 13px;
+                    font-weight: 400;
+                    color: #8897A6;
+                    padding-bottom: 15px;
+                }
+                &-input {
+					margin-top: 22px;
+                    padding: 0 59px 23px;
+                    /deep/.van-field {
+                        padding: 0;
+                        height: 43px;
+                        background: #F9F9FC;
+                        border-radius: 7px;
+                        .van-field__body {
+                            height: 100%;
+                            input {
+                                height: 100%;
+                                padding: 10px 10px;
+                                text-align: center;
+                                font-weight: bold;
+                                font-size: 20px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+		
+        .apply-form-prompt {
+            font-size: 12px;
+            font-weight: 500;
+            margin: 13px 0;
+            text-align: right;
+            color: #e12e2e;
+        }
+        .transaction-box {
+            overflow: hidden;
+            border-radius: 7px;
+            // padding: 22px 59px 32px;
+            text-align: center;
+            .transaction-title {
+                width: 94px;
+                height: 29px;
+				line-height: 29px;
+                background: linear-gradient(-39deg, #FFD07C 0%, #FFE1AC 100%);
+                border-radius: 7px;
+				font-size: 13px;
+				font-family: PingFang SC;
+				font-weight: 500;
+				color: #A25D21;
+			}
+            .transaction-sub-title {
+                font-size: 13px;
+                font-weight: 400;
+                color: #8897A6;
+                padding: 17px;
+				text-align: right;
+            }
+            .transaction-prompt {
+				margin-top: 22px;
+				padding: 0 59px 0px;
+                /deep/.van-cell {
+                    padding: 0;
+                    height: 43px;
+                    background: #F9F9FC;
+                    border-radius: 7px;
+                    .van-field__body {
+                        height: 100%;
+                        input {
+							width: 200px;
+                            height: 100%;
+                            padding: 10px 10px;
+                            text-align: center;
+                            font-weight: bold;
+                            color: #414141;
+                        }
+                    }
+                    //.transaction-input {
+                    //    font-size: 15px;
+                    //    color: #414141;
+                    //}
+                }
+            }
+        }
+        .transaction-forget-password {
+            padding: 20px 0;
+            font-size: 15px;
+            font-weight: 500;
+            color: #676D73;
+            text-align: right;
+        }
+        .transaction-btn {
+            width: 248px;
+            height: 47px;
+            background: #333333;
+            border-radius: 4px;
+			margin-left: 64px;
+            line-height: 47px;
+            text-align: center;
+            font-size: 16px;
+            // font-weight: bold;
+            color: #FFFFFF;
+        }
+    }
+}

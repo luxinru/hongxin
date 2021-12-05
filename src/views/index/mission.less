@@ -1,0 +1,117 @@
+.index-container {
+    //height: 849px;
+    //min-height: 849px;
+    font-family: PingFang SC;
+    .header-cont{
+		width: 375px;
+		height: 222px;
+        background: url("./../../assets/images/task.png") no-repeat;
+		background-size: contain;
+		padding:57px 21px;
+        .header-cont-text {
+            font-size: 13px;
+            font-weight: 400;
+            color: #FFFFFF;
+        }
+        .header-cont-number {
+			margin-top:20px;
+            font-size: 39px;
+            font-family: DIN Alternate;
+            font-weight: bold;
+            color: #FFFFFF;
+        }
+    }
+    .index-title {
+        position: absolute;
+        top: 230px;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+        color: #FFFFFF;
+    }
+    .index-content {
+        position: relative;
+        padding: 0 13px 70px;
+        .task-list-box {
+			margin-top: -66px;
+            background: #FFFFFF;
+			border: 1px solid #FF7859;
+            // box-shadow: 0px 2px 4px 0px rgba(43, 154, 254, 0.4);
+            border-radius: 7px;
+            padding-right: 21px;
+            padding-left: 25px;
+            .task-list-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 26px 0 25px;
+                border-bottom: 1px solid #F8F8F9;
+                &-left {
+                    flex: 1;
+                    display: flex;
+                    align-items: center;
+                    .item-icon {
+                        width: 41px;
+                        height: 41px;
+                        background-size: cover;
+                        background-repeat: no-repeat;
+                        &.icon-1 {
+                            background-image: url("./../../assets/images/shufeng/task/task2.png");
+                        }
+                        &.icon-2 {
+                            background-image: url("./../../assets/images/shufeng/task/task3.png");
+                        }
+                        &.icon-3 {
+                            background-image: url("./../../assets/images/shufeng/task/task4.png");
+                        }
+                        &.icon-4 {
+                            background-image: url("./../../assets/images/shufeng/task/task5.png");
+                        }
+                        &.icon-5 {
+                            background-image: url("./../../assets/images/shufeng/task/task6.png");
+                        }
+                        &.icon-6 {
+                            background-image: url("./../../assets/images/shufeng/task/task7.png");
+                        }
+                    }
+                    .item-title-box {
+                        padding-left: 15px;
+                    }
+                    .item-title{
+                        font-size: 14px;
+                        font-weight: 500;
+                        color: #002D6D;
+                    }
+                    .item-sub-title {
+                        font-size: 12px;
+                        font-weight: 500;
+                        color: #868686;
+                        padding-top: 7px;
+                    }
+                    .item-right{
+                        font-size: 13px;
+                        font-weight: 400;
+                        color: #A5A5A5;
+                    }
+                }
+                &-right {
+                    width: 79px;
+                    height: 33px;
+					line-height: 33px;
+                    background: linear-gradient(90deg, #FF6E43 0%, #FF7D4C 100%);
+                    box-shadow: 0px 3px 8px 0px rgba(255, 119, 73, 0.32);
+                    border-radius: 17px;
+                    text-align: center;
+                    font-size: 13px;
+                    font-weight: 500;
+                    color: #FFFFFF;
+                    &.active-btn{
+                        background-color: #CACACA;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,312 @@
+.tree-container {
+    padding-bottom: 40px;
+    font-family: PingFang SC;
+    background-color: #fff;
+	.mask {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: rgba(0, 0, 0, 0.6);
+	}
+	.ops {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
+		max-width: 80%;
+		margin: -25px auto 0 auto;
+
+		.close {
+
+			font-size: 20px;
+			color: #fff;
+			margin-bottom: 5px;
+			height: 20px;
+
+			div {
+				float: right;
+			}
+		}
+
+		.close::after {
+			clear: both;
+			content: '';
+		}
+
+		a {
+			img {
+				width: 100%;
+				max-width: 750px;
+				height: 100%;
+			}
+		}
+	}
+	.index-center{
+		width: 90%;
+		margin:0 5%;
+		position: absolute;
+		top: 130px;
+		background: #FFFFFF;
+		box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.06);
+		border-radius: 7px;
+	}
+    .tree-header {
+		position: relative;
+        // padding: 30px 13px 10px;
+        background: #fff;
+        .tree-notice-box {
+            padding: 12px 20px;
+            .tree-notice{
+                background-color: #fff;
+                border-radius: 16px;
+                /deep/.van-notice-bar {
+                    padding: 0;
+                    height: 31px;
+                    font-size: 13px;
+                    background-color: transparent !important;
+                    > img {
+                        width: 63px;
+                        height: 20px;
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+        .tree-header-swipe {
+            height: 147px;
+            border-radius: 7px;
+            margin-bottom: 25px;
+            .bannerSwp {
+                width: 100%;
+                height: 100%;
+                border-radius: 0;
+                /deep/.van-swipe {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 0px;
+                }
+            }
+        }
+        .index-menu-list {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 19px 25px;
+            border-bottom: 1px solid #E9E9E9;
+            &-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                &-icon {
+                    width: 33px;
+                    height: 29px;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    &.one-icon {
+                        background-image: url("./../../assets/images/shufeng/index/12.png");
+                    }
+                    &.two-icon {
+                        background-image: url("./../../assets/images/shufeng/index/13.png");
+                    }
+                    &.three-icon {
+                        background-image: url("./../../assets/images/shufeng/index/14.png");
+                    }
+                    &.four-icon {
+                        background-image: url("./../../assets/images/shufeng/index/15.png");
+                    }
+                }
+                &-text {
+                    font-size: 13px;
+                    font-family: PingFang SC;
+                    font-weight: 500;
+                    color: #1B1B1B;
+                    padding-top: 14px;
+                }
+            }
+        }
+    }
+    .index-menu-list-box {
+        margin-bottom: 15px;
+        .index-menu-info {
+            padding: 0 13px;
+            .index-menu-info-back {
+                height: 277px;
+                background-size: cover;
+                background-repeat: no-repeat;
+                &.info-back-class-1 {
+                    background-image: url("./../../assets/images/shufeng/index/index-8.png");
+                }
+                &.info-back-class-2 {
+                    background-image: url("./../../assets/images/shufeng/index/index-5.png");
+                }
+                &.info-back-class-3 {
+                    background-image: url("./../../assets/images/shufeng/index/index-7.png");
+                }
+                &.info-back-class-4 {
+                    background-image: url("./../../assets/images/shufeng/index/index-6.png");
+                }
+            }
+        }
+    }
+    .tree-list-box {
+		margin-top: 150px;
+        padding: 13px 0;
+        margin-bottom: 40px;
+        .tree-list-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            .title-line {
+                width: 4px;
+                height: 16px;
+                background: #1F6BFF;
+                border-radius: 2px;
+                margin-right: 10px;
+            }
+            .title-name {
+                font-size: 15px;
+                font-weight: bold;
+                color: #202020;
+            }
+        }
+        .tree-list-info {
+            display: flex;
+            padding: 0 13px;
+			margin-top:5px ;
+            margin-bottom: 24px;
+            &-back {
+                width: 50%;
+                padding-right: 7px;
+                &.right-back {
+                    padding-right: 0;
+                    padding-left: 7px;
+                    > div {
+                        background-image: url("./../../assets/images/shufeng/index/8.png");
+                    }
+                }
+                > div {
+                    height: 100px;
+                    background-image: url("./../../assets/images/shufeng/index/7.png");
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                }
+            }
+        }
+        .tree-list-info-bottom {
+            padding: 0 11px 0 10px;
+            &-back {
+                height: 201px;
+                background-image: url("./../../assets/images/shufeng/index/9.png");
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+        }
+        .tree-list-item {
+            width: 100%;
+            height: 86px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            &.one-item {
+                margin-bottom: 13px;
+                background-image: url("./../../assets/images/qianhai/index/index-7.png");
+            }
+            &.two-item {
+                background-image: url("./../../assets/images/qianhai/index/index-8.png");
+            }
+            &-text {
+                padding: 23px 24px 0;
+                font-size: 16px;
+                color: #fff;
+                &-name {
+                    font-size: 18px;
+                    font-weight: bold;
+                    margin-bottom: 11px;
+                }
+            }
+        }
+    }
+    //.tree-list-box{
+    //    padding: 0 13px;
+    //    .tree-list-item{
+    //        margin-top: 13px;
+    //        padding: 20px 17px 22px 23px;
+    //        display: flex;
+    //        align-items: center;
+    //        width: 348px;
+    //        height: 80px;
+    //        border-radius: 4px;
+    //        &.one{
+    //            background: #FFF1EF;
+    //        }
+    //        &.two{
+    //            background: #FFF7E9;
+    //        }
+    //        &.three{
+    //            background: #F5F3FE;
+    //        }
+    //        &.four{
+    //            background: #FEF3FD;
+    //        }
+    //        &.five{
+    //            background: #E5F7FF;
+    //        }
+    //        &.six{
+    //            background: #FFF1EF;
+    //        }
+    //        .left-icon{
+    //            width: 37px;
+    //            height: 37px;
+    //        }
+    //        .list-info{
+    //            width: 168px;
+    //            margin-left: 16px;
+    //            .left-info-title{
+    //                font-size: 15px;
+    //                font-weight: bold;
+    //                color: #182136;
+    //            }
+    //            .left-info-slogan{
+    //                font-size: 14px;
+    //                font-weight: 500;
+    //                color: #505362;
+    //                margin-top: 10px;
+    //            }
+    //        }
+    //        .right-btn{
+    //            width: 87px;
+    //            height: 29px;
+    //            line-height: 29px;
+    //            text-align: center;
+    //            font-size: 13px;
+    //            font-weight: 500;
+    //            color: #FFFFFF;
+    //            background-size: 100%;
+    //            background-repeat: no-repeat;
+    //            &.btn-one{
+    //                background-image: url('../../assets/images/image/btn_1.png');
+    //            }
+    //            &.btn-two{
+    //                background-image: url('../../assets/images/image/btn_2.png');
+    //            }
+    //            &.btn-three{
+    //                background-image: url('../../assets/images/image/btn_3.png');
+    //            }
+    //            &.btn-four{
+    //                background-image: url('../../assets/images/image/btn_4.png');
+    //            }
+    //            &.btn-five{
+    //                background-image: url('../../assets/images/image/btn_5.png');
+    //            }
+    //            &.btn-six{
+    //                background-image: url('../../assets/images/image/btn_6.png');
+    //            }
+    //        }
+    //    }
+    //}
+}
