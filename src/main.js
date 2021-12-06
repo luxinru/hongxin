@@ -5,18 +5,20 @@ import store from './store/'
 import './registerServiceWorker'
 import '@/assets/styles/reset.scss'
 // import { Notify, Dialog } from 'vant';
-import Vant from 'vant';
+import Vant from 'vant'
 import vueTouch from "vue-plugin-touch"
 import 'amfe-flexible'
 
 import $ from "jquery"
 import requestAnimationFrameHack from './utils/requestAnimationFram'
 import jequeryExtensFly from './utils/fly'
+import Btn from "./components/btn.vue"
 
 requestAnimationFrameHack()
 jequeryExtensFly($)
 window.$ = $
 
+Vue.component('Btn', Btn)
 // Vue.use(Notify).use(Dialog).use(vueTouch);
 Vue.use(vueTouch);
 Vue.use(Vant);

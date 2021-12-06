@@ -1,105 +1,94 @@
 <template>
-    <div class="mains">
-        
-		<!-- <div class="header">
-            <div class="head">
-                <a @click="$router.back()" class="back"></a>
-                支付宝设置
-            </div>
-        </div> -->
-		<!-- <div style="text-align: center;" ><img class="logo" src="./images/alipay-top.jpg" alt=""></div> -->
-        <div class="verify_wrap">
-            <form class="form" @submit.prevent="handleSubmit">
-                <div class="item">
-                    <div class="left">
-                        <!-- <img src="./images/people.png" /> -->
-                        <span>姓名</span>
-                    </div>
-                    <input type="text" v-model.trim="data.name" :readonly="data.is_auth === 'Y'" placeholder="请输入您的姓名">
-                </div>
-                <div class="item">
-                    <div class="left">
-                        <!-- <img src="./images/people.png" /> -->
-                        <span>支付宝账号</span>
-                    </div>
-                    <input type="text" v-model.trim="data.alipay" :readonly="data.is_auth === 'Y'" placeholder="请输入您的支付宝账号">
-                </div>
-                
+  <div class="mains">
+    <div class="verify_wrap">
+      <form class="form">
+        <div class="item">
+          <div class="left">
+            <!-- <img src="./images/people.png" /> -->
+            <span>姓名</span>
+          </div>
+          <input
+            type="text"
+            v-model.trim="data.name"
+            :readonly="data.is_auth === 'Y'"
+            placeholder="请输入您的姓名"
+          />
+        </div>
+        <div class="item">
+          <div class="left">
+            <!-- <img src="./images/people.png" /> -->
+            <span>支付宝账号</span>
+          </div>
+          <input
+            type="text"
+            v-model.trim="data.alipay"
+            :readonly="data.is_auth === 'Y'"
+            placeholder="请输入您的支付宝账号"
+          />
+        </div>
 
-                <!-- <div class="item" style="background-color: #ffffff;">
-                    <span class="info"></span>
-                    <input class="inp" type="text" name="name" v-model.trim="data.name" placeholder="请输入姓名" :readonly="data.is_auth === 'Y'">
-                </div>
-                <div class="item" style="background-color: #ffffff;">
-                    <span class="info"></span>
-                    <input class="inp" type="text" name="alipay" v-model.trim="data.alipay" placeholder="请输入支付宝账号" :readonly="data.is_alipay === 'Y'">
-                </div> -->
-               
-                <div class="warming">绑定的支付宝必须与实名一致，否则将无法成功提现。</div>
-            </form>
-        </div>
-        <div class="recharge-remark-box" style="margin:0 20px 20px;">
-        <p>
-            温馨提示：该绑定仅用于小额提现时系统自动转账到用户所需的支付宝账号；该绑定并非授权，不会自动扣费，请您放心使用。
-        </p>
-        </div>
-         <button type="submit" class="btn" v-if="data.is_alipay !== 'N'">立即绑定</button>
+        <Btn v-if="data.is_alipay !== 'N'" background="rgba(47, 128, 237, 1)" @click="handleSubmit">立即绑定</Btn>
+      </form>
     </div>
+    <div class="recharge-remark-box">
+      <p>温馨提示:</p>
+      <p>
+        该绑定仅用于小额提现时系统自动转账到用户所需的支付宝账号；该绑定并非授权，不会自动扣费，请您放心使用。
+      </p>
+    </div>
+  </div>
 </template>
 
 <script>
+import Fetch from "../../utils/fetch";
 
-    import Fetch from '../../utils/fetch'
-
-    export default {
-        name: "index",
-        components: {},
-        data() {
-            return {
-                data: {},
-                money_info: '',
-                money: '',
-            };
-        },
-        created() {
-            this.$parent.footer(false);
-        },
-        mounted() {
-            this.start();
-        },
-        methods: {
-            start() {
-                Fetch('/user/alipay').then(res => {
-                    this.data = res.data;
-                })
-
-            },
-            handleSubmit() {
-
-                if (!this.data.name) {
-                    this.$notify("请输入姓名");
-                    return;
-                }
-
-                if (!this.data.alipay) {
-                    this.$notify("请输入支付宝账号");
-                    return;
-                }
-
-                Fetch("/user/set_alipay", {
-                    ...this.data
-                }).then(() => {
-                    this.$notify({
-                        background: '#07c160',
-                        message: '操作成功'
-                    });
-                    this.$router.replace({
-                        path: this.$router.history.current.query.redirect || "/info"
-                    });
-                })
-            }
-        }
+export default {
+  name: "index",
+  components: {},
+  data() {
+    return {
+      data: {},
+      money_info: "",
+      money: "",
     };
+  },
+  created() {
+    this.$parent.footer(false);
+  },
+  mounted() {
+    this.start();
+  },
+  methods: {
+    start() {
+      Fetch("/user/alipay").then((res) => {
+        this.data = res.data;
+      });
+    },
+    handleSubmit() {
+      if (!this.data.name) {
+        this.$notify("请输入姓名");
+        return;
+      }
+
+      if (!this.data.alipay) {
+        this.$notify("请输入支付宝账号");
+        return;
+      }
+
+      Fetch("/user/set_alipay", {
+        ...this.data,
+      }).then(() => {
+        this.$notify({
+          background: "#07c160",
+          message: "操作成功",
+        });
+        this.$router.replace({
+          path: this.$router.history.current.query.redirect || "/info",
+        });
+      });
+    },
+  },
+};
 </script>
 
 <style lang="less" scoped>
@@ -134,32 +123,43 @@
     }
 }
 .recharge-remark-box {
-  font-size: 13px;
-  color: #989898;
-  padding: 17px 15px;
-  margin-bottom: 29px;
-  border-radius: 7px;
-  background: #DCE1FA;
-  box-shadow: 0px 0px 13px 0px rgba(0, 4, 26, 0.05);
-  border-radius: 7px;
-  .recharge-remark-title {
-    font-size: 15px;
-    font-weight: 400;
-    color: #000000;
-  }
-  > p {
-    margin-bottom: 10px;
-    line-height: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #1C1D38;
+  line-height: 14px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 33px;
+  padding: 0 12px;
+
+  p {
+    &:first-child {
+      color: rgba(28, 29, 56, 1);
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
   }
 }
 .mains{
-background-color: #F5F4FA;
-min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: scroll;
+  background: url('~@/assets/hongxin/bg-支付宝绑定@2x.png') no-repeat;
+  background-size: 100% 366px;
+  background-color: rgba(242, 242, 242, 1);
 }
-.logo {
-        display: block;
-        width: 100%;
-        margin: 0 auto 14px auto;
+
+    .verify_wrap {
+      margin-top: 289px;
+      width: 351px;
+      background: #FFFFFF;
+      border-radius: 10px;
     }
 
     .verify_wrap .form {
