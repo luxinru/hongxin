@@ -4,6 +4,7 @@ import router from './router'
 import store from './store/'
 import './registerServiceWorker'
 import '@/assets/styles/reset.scss'
+import '@/assets/styles/common.less'
 // import { Notify, Dialog } from 'vant';
 import Vant from 'vant'
 import vueTouch from "vue-plugin-touch"
@@ -19,38 +20,8 @@ jequeryExtensFly($)
 window.$ = $
 
 Vue.component('Btn', Btn)
-// Vue.use(Notify).use(Dialog).use(vueTouch);
 Vue.use(vueTouch);
 Vue.use(Vant);
-// const ua = navigator.userAgent
-
-// if(ua.indexOf("bsl") >= 0 ) {
-
-//   // alert("mainjs")
-//   var x = 1;
-
-//   function appFinishiLoad() {
-//     BSL.PhoneID('id');
-//   }
-
-// function id(i) {
-//     if(i.indexOf('-') < 0){
-//         BSL.OpenStep();
-//     }
-//     alert(i)
-//     setInterval(function () {
-//       BSL.GetStepCount('step');
-//       x++;
-//     }, 1000);
-//   }
-
-//   function step(s) {
-//     alert(s)
-//     //document.body.innerHTML = '��' + x + '�λ�ò���Ϊ' + s;
-//   }
-//   BSL.PhoneID('id');
-
-// }
 Vue.config.productionTip = false
 
 router.beforeEach((to, from, next) => {

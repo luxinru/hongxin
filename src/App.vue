@@ -11,310 +11,284 @@
         />
         <div
           class="head"
-          :style="`${background ? 'background: ' + background : ''};${
-            color ? 'color: ' + color : ''
-          }`"
+          :style="
+            `${background ? 'background: ' + background : ''};${
+              color ? 'color: ' + color : ''
+            }`
+          "
         >
           {{ title }}
         </div>
       </div>
     </keep-alive>
-    <div style="flex: 1; overflow: scroll">
+    <div style="flex: 1 0;width: 100%;overflow: scroll;">
       <router-view></router-view>
     </div>
     <div class="footer_nav" v-if="show_footer && footer_type === 'n2'">
-      <div class="indexnav">
-        <div class="nav_top btn-group">
-          <router-link class="footer_item" to="/tree"
-            ><img
-              :src="
-                show_type == 'tree'
-                  ? require('./assets/tabs/sy1.png')
-                  : require('./assets/tabs/sy0.png')
-              "
-            /><span>首页</span></router-link
-          >
-          <router-link class="footer_item" to="/item"
-            ><img
-              :src="
-                show_type == 'touzi'
-                  ? require('./assets/tabs/tz1.png')
-                  : require('./assets/tabs/tz0.png')
-              "
-            /><span>投资</span></router-link
-          >
+      <router-link class="footer_item" to="/tree">
+        <img
+          :src="
+            show_type == 'tree'
+              ? require('@/assets/hongxin/1-1 首页_slices/首页P@2x.png')
+              : require('@/assets/hongxin/1-1 首页_slices/首页N@2x.png')
+          "
+        />
+        <span :class="{active: show_type == 'tree'}">首页</span>
+      </router-link>
+      <router-link class="footer_item" to="/goods">
+        <img
+          :src="
+            show_type == 'goods'
+              ? require('@/assets/hongxin/1-1 首页_slices/积分P@2x.png')
+              : require('@/assets/hongxin/1-1 首页_slices/积分N@2x.png')
+          "
+        />
+        <span :class="{active: show_type == 'goods'}">积分</span>
+      </router-link>
+      <router-link class="footer_item" to="/item">
+        <img
+          :src="
+            show_type == 'touzi'
+              ? require('@/assets/hongxin/1-1 首页_slices/理财P@2x.png')
+              : require('@/assets/hongxin/1-1 首页_slices/理财N@2x.png')
+          "
+        />
+        <span :class="{active: show_type == 'touzi'}">理财</span>
+      </router-link>
 
-          <router-link class="footer_item" to="/index"
-            ><img
-              :src="
-                show_type == 'mission'
-                  ? require('./assets/tabs/rw1.png')
-                  : require('./assets/tabs/rw0.png')
-              "
-            /><span>任务</span></router-link
-          >
+      <router-link class="footer_item" to="/index">
+        <img
+          :src="
+            show_type == 'mission'
+              ? require('@/assets/hongxin/1-1 首页_slices/打卡P@2x.png')
+              : require('@/assets/hongxin/1-1 首页_slices/打卡N@2x.png')
+          "
+        />
+        <span :class="{active: show_type == 'mission'}">打卡</span>
+      </router-link>
 
-          <router-link class="footer_item" to="/user"
-            ><img
-              :src="
-                show_type == 'info'
-                  ? require('./assets/tabs/wd1.png')
-                  : require('./assets/tabs/wd0.png')
-              "
-            /><span>我的</span></router-link
-          >
-        </div>
-      </div>
+      <router-link class="footer_item" to="/user">
+        <img
+          :src="
+            show_type == 'info'
+              ? require('@/assets/hongxin/1-1 首页_slices/我的P@2x.png')
+              : require('@/assets/hongxin/1-1 首页_slices/我的N@2x.png')
+          "
+        />
+        <span :class="{active: show_type == 'info'}">我的</span>
+      </router-link>
     </div>
-    <div id="footer" v-if="show_footer && footer_type === 'n1'">
-      <div class="indexnav">
-        <div class="nav_top btn-group" style="justify-content: center">
-          <router-link class="footer_item" to="/tree"
-            ><img
-              :src="
-                show_type == 'tree'
-                  ? require('./assets/tabs/sy1.png')
-                  : require('./assets/tabs/sy0.png')
-              "
-            /><span>首页</span></router-link
-          >
-          <router-link class="footer_item" to="/mission"
-            ><img
-              :src="
-                show_type == 'mission'
-                  ? require('./assets/tabs/rw1.png')
-                  : require('./assets/tabs/rw0.png')
-              "
-            /><span>任务</span></router-link
-          >
-          <router-link class="footer_item" to="/info"
-            ><img
-              :src="
-                show_type == 'info'
-                  ? require('./assets/tabs/wd1.png')
-                  : require('./assets/tabs/wd0.png')
-              "
-            /><span>我的</span></router-link
-          >
-        </div>
-      </div>
+    <div class="footer_nav" v-if="show_footer && footer_type === 'n1'">
+      <router-link class="footer_item" to="/tree">
+        <img
+          :src="
+            show_type == 'tree'
+              ? require('@/assets/hongxin/1-1 首页_slices/首页P@2x.png')
+              : require('@/assets/hongxin/1-1 首页_slices/首页N@2x.png')
+          "
+        />
+        <span :class="{active: show_type == 'tree'}">首页</span>
+      </router-link>
+      <router-link class="footer_item" to="/goods">
+        <img
+          :src="
+            show_type == 'goods'
+              ? require('@/assets/hongxin/1-1 首页_slices/积分P@2x.png')
+              : require('@/assets/hongxin/1-1 首页_slices/积分N@2x.png')
+          "
+        />
+        <span :class="{active: show_type == 'goods'}">积分</span>
+      </router-link>
+      <router-link class="footer_item" to="/index">
+        <img
+          :src="
+            show_type == 'index'
+              ? require('@/assets/hongxin/1-1 首页_slices/打卡P@2x.png')
+              : require('@/assets/hongxin/1-1 首页_slices/打卡N@2x.png')
+          "
+        />
+        <span :class="{active: show_type == 'index'}">打卡</span>
+      </router-link>
+      <router-link class="footer_item" to="/info">
+        <img
+          :src="
+            show_type == 'info'
+              ? require('@/assets/hongxin/1-1 首页_slices/我的P@2x.png')
+              : require('@/assets/hongxin/1-1 首页_slices/我的N@2x.png')
+          "
+        />
+        <span :class="{active: show_type == 'info'}">我的</span>
+      </router-link>
     </div>
     <kefu></kefu>
   </div>
 </template>
 
 <script>
-import { Dialog } from "vant";
-import Fetch from "./utils/fetch";
-import kefu from "./utils/kefu.vue";
-import md5 from "js-md5";
-import router from "./router";
-var path, title, currentPath, background, color;
+import { Dialog } from 'vant'
+import Fetch from './utils/fetch'
+import kefu from './utils/kefu.vue'
+import md5 from 'js-md5'
+import router from './router'
+var path, title, currentPath, background, color
 router.beforeEach((to, from, next) => {
   /* 路由发生变化修改页面title */
-  console.log(from.path, to);
-  path = from.path;
-  currentPath = to.meta.hiddenTitle ? false : true;
-  title = to.meta.title;
-  background = to.meta.background;
-  color = to.meta.color;
+  console.log(from.path, to)
+  path = from.path
+  currentPath = to.meta.hiddenTitle ? false : true
+  title = to.meta.title
+  background = to.meta.background
+  color = to.meta.color
   setTimeout(() => {
-    window.$("body").scrollTop(0);
-  });
-  next();
-});
+    window.$('body').scrollTop(0)
+  })
+  next()
+})
 export default {
-  name: "App",
-  data() {
+  name: 'App',
+  data () {
     return {
-      footer_type: "n1",
+      footer_type: 'n1',
       show_footer: false,
-      show_type: "index",
-      path: "/",
-      title: "",
-      currentPath: "/",
-      idfa: "",
-    };
+      show_type: 'index',
+      path: '/',
+      title: '',
+      currentPath: '/',
+      idfa: ''
+    }
   },
 
   components: {
-    kefu,
+    kefu
   },
-  beforeUpdate() {
-    this.path = path;
-    this.title = title;
-    this.currentPath = currentPath;
-    this.background = background;
+  beforeUpdate () {
+    this.path = path
+    this.title = title
+    this.currentPath = currentPath
+    this.background = background
     console.log('color', color)
-    this.color = color;
-    console.log(currentPath);
+    this.color = color
+    console.log(currentPath)
   },
 
-  created() {
-    var type = localStorage.getItem("footer");
+  created () {
+    var type = localStorage.getItem('footer')
     if (type) {
-      this.footer_type = type;
+      this.footer_type = type
     }
     // alert(md5("869706033336472,869706033336464".split(',')[1].toLowerCase()).toLowerCase())
 
     // 安卓原生
-    var token = localStorage.getItem("token");
-    var frist_run = localStorage.getItem("frist_run");
+    var token = localStorage.getItem('token')
+    var frist_run = localStorage.getItem('frist_run')
     if (/LT-APP/.test(navigator.userAgent)) {
       if (!token && !frist_run) {
         jsBridge.getIMEI(function (imei) {
-          for (var i = 0; i < imei.split(",").length; i++) {
+          for (var i = 0; i < imei.split(',').length; i++) {
             // 返回了oaid
-            if (imei.split(",").length == 1 && imei.length > 16) {
-              Fetch("/index/tx_action", {
-                type: "Android",
+            if (imei.split(',').length == 1 && imei.length > 16) {
+              Fetch('/index/tx_action', {
+                type: 'Android',
                 muid: imei,
-                action_type: "ACTIVATE_APP",
-              });
+                action_type: 'ACTIVATE_APP'
+              })
             } else {
-              Fetch("/index/tx_action", {
-                type: "Android",
-                muid: md5(imei.split(",")[i].toLowerCase()).toLowerCase(),
-                action_type: "ACTIVATE_APP",
-              });
+              Fetch('/index/tx_action', {
+                type: 'Android',
+                muid: md5(imei.split(',')[i].toLowerCase()).toLowerCase(),
+                action_type: 'ACTIVATE_APP'
+              })
             }
           }
-        });
+        })
 
-        localStorage.setItem("frist_run", "run");
+        localStorage.setItem('frist_run', 'run')
       }
     } else {
       // ios原生
       if (!token && !frist_run) {
-        this.getIosIdfa();
+        this.getIosIdfa()
       }
     }
   },
-  mounted() {
-    this.syncDevNo();
+  mounted () {
+    this.syncDevNo()
     this.timer = setInterval(() => {
-      this.syncDevNo();
-    }, 5000);
-    window.returnIosIdfa = this.returnIosIdfa;
+      this.syncDevNo()
+    }, 5000)
+    window.returnIosIdfa = this.returnIosIdfa
   },
   methods: {
     //是否显示底部
-    footer: function (bool, show = "index") {
-      this.show_footer = bool;
-      this.show_type = show;
+    footer: function (bool, show = 'index') {
+      this.show_footer = bool
+      this.show_type = show
     },
-    setFooterType: function (type = "n1") {
-      console.log(type);
-      this.footer_type = type;
-      localStorage.setItem("footer", type);
+    setFooterType: function (type = 'n1') {
+      console.log(type)
+      this.footer_type = type
+      localStorage.setItem('footer', type)
     },
     getFooterType: function () {
-      return this.footer_type;
+      return this.footer_type
     },
-    getIosIdfa() {
-      window.webkit.messageHandlers.idfa.postMessage({ result: "idfa" }); //app中接收到之后会回调给下面的函数
+    getIosIdfa () {
+      window.webkit.messageHandlers.idfa.postMessage({ result: 'idfa' }) //app中接收到之后会回调给下面的函数
     },
-    returnIosIdfa(idfa) {
-      var token = localStorage.getItem("token");
-      var frist_run = localStorage.getItem("frist_run");
+    returnIosIdfa (idfa) {
+      var token = localStorage.getItem('token')
+      var frist_run = localStorage.getItem('frist_run')
       if (!token && !frist_run) {
-        var muid = md5(idfa.toUpperCase()).toLowerCase();
-        Fetch("/index/tx_action", {
-          type: "iOS",
+        var muid = md5(idfa.toUpperCase()).toLowerCase()
+        Fetch('/index/tx_action', {
+          type: 'iOS',
           muid: muid,
-          action_type: "ACTIVATE_APP",
-        });
+          action_type: 'ACTIVATE_APP'
+        })
       }
-      localStorage.setItem("frist_run", "run");
+      localStorage.setItem('frist_run', 'run')
     },
-    syncDevNo() {
-      let devNo = localStorage.getItem("dev_no"),
-        devType = localStorage.getItem("dev_type");
+    syncDevNo () {
+      let devNo = localStorage.getItem('dev_no'),
+        devType = localStorage.getItem('dev_type')
       if (devNo || 1) {
         Fetch(
-          "/index/sync",
+          '/index/sync',
           {
             dev_no: devNo,
-            dev_type: devType,
+            dev_type: devType
           },
           null,
           false
-        ).then((r) => {
-          this.footer_type = r.data.footer;
+        ).then(r => {
+          this.footer_type = r.data.footer
           if (r.data.is_open_notice_dialog) {
-            this.openNoticeDialog();
+            this.openNoticeDialog()
           }
-        });
+        })
       }
     },
-    openNoticeDialog() {
+    openNoticeDialog () {
       Dialog.confirm({
-        title: "提示",
-        message: "您有新消息，是否前往查看?",
+        title: '提示',
+        message: '您有新消息，是否前往查看?'
       })
         .then(() => {
-          this.$router.push("/notice").catch((err) => {
-            err;
-          });
+          this.$router.push('/notice').catch(err => {
+            err
+          })
         })
         .catch(() => {
-          return;
-        });
+          return
+        })
     },
-    handleBack() {
-      this.$router.go(-1);
-    },
-  },
-};
-</script>
-<style lang="less" scoped>
-.paddingTop {
-  padding-top: 50px;
-}
-.indexnav {
-  width: 100%;
-  background: #fff;
-  overflow: hidden;
-  line-height: 30px;
-  font-size: 12px;
-  // margin-top: 24px;
-  padding-top: 15px;
-
-  .nav_top,
-  .nav_bottom {
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: nowrap;
-    margin-bottom: 14px;
+    handleBack () {
+      this.$router.go(-1)
+    }
   }
 }
-
-.indexnav a {
-  text-align: center;
-  width: 23.466%;
-  font-size: 12px;
-  display: flex;
-  flex-direction: column;
-}
-
-.indexnav a span {
-  width: 100%;
-  display: block;
-  line-height: 16px;
-  margin-top: 4px;
-  font-size: 13px;
-}
-
-.indexnav a img {
-  width: 24px;
-  height: 24px;
-  margin: 0 auto;
-  display: block;
-  overflow: hidden;
-}
-
+</script>
+<style lang="less" scoped>
 #app {
   height: 100%;
   width: 100%;
@@ -336,106 +310,37 @@ export default {
 		} */
 
   .footer_nav {
-    width: 100vw;
+    width: 100%;
     height: 70px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    box-shadow: 0px -1px 5px rgba(89, 125, 172, 0.4);
-    margin: 0 auto;
-    z-index: 998;
-    background-color: #fff;
-    color: #7a7e83;
-    border-left: 0 solid #fff;
-    border-top: 0 solid #fff;
-    border-right: 0 solid #fff;
-    display: -webkit-box;
-    display: -webkit-flex;
     display: flex;
-    -webkit-justify-content: space-around;
-    justify-content: space-around;
-    border-top-right-radius: 0px;
-    border-top-left-radius: 0px;
-    box-sizing: border-box;
-    overflow: hidden;
-  }
-
-  #footer {
-    width: 100vw;
-    height: 70px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    box-shadow: 0px -1px 5px rgba(89, 125, 172, 0.4);
-    margin: 0 auto;
-    z-index: 998;
-    background-color: #fff;
-    color: #7a7e83;
-    border-left: 0 solid #fff;
-    border-top: 0 solid #fff;
-    border-right: 0 solid #fff;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-justify-content: center;
-    justify-content: center;
-    border-top-right-radius: 0px;
-    border-top-left-radius: 0px;
-    box-sizing: border-box;
-    overflow: hidden;
-  }
-
-  #footer .footer_item {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
-    color: #4b4b4b;
-    font-size: 12px;
+
+    .footer_item {
+      flex: 1 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 28px;
+        height: 28px;
+      }
+
+      span {
+        font-size: 11px;
+        font-weight: 400;
+        color: rgba(153, 153, 153, 1);
+        line-height: 14px;
+        margin-top: 2px;
+        transform: scale(11 / 12);
+      }
+
+      .active {
+        color: rgba(108, 77, 217, 1);
+      }
+    }
   }
-
-  #footer .footer_item img {
-    width: 24px;
-    height: 24px;
-  }
-}
-
-.btn-group img {
-  // background-color: #4CAF50; /* Green background */
-  // border: 1px solid green; /* Green border */
-  // color: white; /* White text */
-  // padding: 10px 24px; /* Some padding */
-  // cursor: pointer; /* Pointer/hand icon */
-  // float: left; /* Float the buttons side by side */
-}
-
-/* Clear floats (clearfix hack) */
-.btn-group:after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-.btn-group img:not(:last-child) {
-  border-right: none; /* Prevent double borders */
-}
-
-/* Add a background color on hover */
-.btn-group img:hover {
-  // opacity: 10px;
-  // border-radius: 50px;
-  //    background-color: #3e8e41;
 }
 
 #app ::-webkit-scrollbar {
