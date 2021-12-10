@@ -21,7 +21,7 @@
       <div class="project-info-list-item">
         <div class="project-info-list-item-bottom one-bottom">
           {{ investInfo.rate }}%
-        </div>  
+        </div>
         <div class="project-info-list-item-top">日利率</div>
       </div>
       <div class="project-info-list-item">
@@ -36,21 +36,17 @@
         </div>
         <div class="project-info-list-item-top">总分红（元）</div>
       </div>
+      <div class="project-btn">立即投资</div>
     </div>
-    <div class="project-progress-warp">
+    <!-- <div class="project-progress-warp">
       <div class="project-progress-box">
         <div
           class="project-progress"
           :style="schedule(investInfo.schedule)"
         ></div>
       </div>
-      <!-- <div class="progress-value">{{investInfo.schedule}}%</div> -->
-    </div>
-    <div class="project-footer">
-      <div class="project-btn-box">
-        <div class="project-btn">立即投资</div>
-      </div>
-    </div>
+      <div class="progress-value">{{investInfo.schedule}}%</div>
+    </div> -->
   </div>
 </template>
 <script>
@@ -112,7 +108,7 @@ export default {
     .project-name {
       font-size: 12px;
       font-weight: 600;
-      color: #32333F;
+      color: #32333f;
     }
 
     .zz {
@@ -149,12 +145,16 @@ export default {
   }
 
   .project-info-list {
+    width: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 0 24px 21px 15px;
+    margin-top: 12px;
 
     &-item {
+      flex: 1 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       &-top {
         font-size: 13px;
         font-weight: 500;
@@ -174,6 +174,18 @@ export default {
           color: #ee4034;
         }
       }
+    }
+    .project-btn {
+      width: 87px;
+      height: 30px;
+      background: #FF6549;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 400;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 
@@ -201,37 +213,6 @@ export default {
       font-weight: 500;
       color: #023efe;
       padding-left: 12px;
-    }
-  }
-
-  .project-footer {
-    padding: 0 19px 16px;
-    .project-btn-box {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      .project-size {
-        font-size: 13px;
-        font-weight: 500;
-        color: #3e3e3e;
-        > span {
-          color: #023efe;
-        }
-      }
-
-      .project-btn {
-        margin: 0 auto;
-        width: 216px;
-        height: 47px;
-        background: #ff6d42;
-        border-radius: 23px;
-        line-height: 47px;
-        text-align: center;
-        font-size: 13px;
-        font-weight: 400;
-        color: #ffffff;
-      }
     }
   }
 }

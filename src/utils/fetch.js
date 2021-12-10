@@ -1,52 +1,51 @@
 import axios from 'axios'
-import qs from "qs"
-import {Toast} from 'vant'
+import qs from 'qs'
+import { Toast } from 'vant'
 import router from '@/router'
 // import {Notify} from 'vant'
-import {Dialog} from 'vant';
+import { Dialog } from 'vant'
 import 'vant/lib/index.css'
-let loadingCount = 0;
+let loadingCount = 0
 
 export const showLoading = () => {
-    if (loadingCount <= 0) {
-        Toast.loading({
-            // mask: true,
-            duration: 20000
-        })
-    }
-    loadingCount++
-};
+  if (loadingCount <= 0) {
+    Toast.loading({
+      // mask: true,
+      duration: 20000
+    })
+  }
+  loadingCount++
+}
 
 export const hideLoading = () => {
-    loadingCount--;
-    if (loadingCount <= 0) {
-        Toast.clear()
-        loadingCount = 0
-    }
-};
+  loadingCount--
+  if (loadingCount <= 0) {
+    Toast.clear()
+    loadingCount = 0
+  }
+}
 
-let ssid = localStorage.getItem('ssid');
+// let ssid = localStorage.getItem('ssid')
 
 export default async (url, data, opt, isLoad = true) => {
-	// return;
-    if (isLoad) {
-        showLoading();
-    }
-    // url = "/api"+url;
-	if (url.indexOf("http") != -1 ) {
-	}else{
-		//url = "http://sh.com/api"+url;
-		//url = "https://ybqjy.com/api"+url;
-        // url = "https://haoxlb.com/api"+url;
-        url = "http://119.45.129.32/api"+url;
-		// var host = 'https://' + window.location.host;
-		// url = host+"/api"+url;
-	}
-	
+  // return;
+  if (isLoad) {
+    showLoading()
+  }
+  // url = "/api"+url;
+  if (url.indexOf('http') != -1) {
+    console.log()
+  } else {
+    //url = "http://sh.com/api"+url;
+    //url = "https://ybqjy.com/api"+url;
+    // url = "https://haoxlb.com/api"+url;
+    url = 'http://119.45.129.32/api' + url
+    // var host = 'https://' + window.location.host;
+    // url = host+"/api"+url;
+  }
 
-	
-    const set = {method: 'post', ...opt};
-    /**const nowTime = Date.parse(new Date()) / 1000;
+  const set = { method: 'post', ...opt }
+  /**const nowTime = Date.parse(new Date()) / 1000;
     var expireTime = parseInt(localStorage.getItem('expire_time'));
     const resetTime = parseInt(localStorage.getItem('reset_time'));
 
@@ -68,105 +67,113 @@ export default async (url, data, opt, isLoad = true) => {
         });
     }
     localStorage.setItem('reset_time', nowTime + expireTime);**/
-    var token = localStorage.getItem('token');
-    return (set.method === 'post' ? axios.post(url, {...data, token}) : axios.get(url + '?' + qs.stringify({
-        ...data,
-        token
-    }))).then(r => {
+  var token = localStorage.getItem('token')
+  return (set.method === 'post'
+    ? axios.post(url, { ...data, token })
+    : axios.get(
+        url +
+          '?' +
+          qs.stringify({
+            ...data,
+            token
+          })
+      )
+  )
+    .then(r => {
+      if (isLoad) {
+        hideLoading()
+      }
 
-        if (isLoad) {
-            hideLoading();
+      if (r.status === 200) {
+        // console.log(r.data)
+        return r.data
+      }
+
+      if (r.data.code === 0) {
+        return r.data
+      }
+
+      throw { msg: '网络错误，请稍后重试' }
+    })
+    .then(r => {
+      if (r.code === 1) {
+        return r
+      } else {
+        if (r.code === 0) {
+          throw { msg: r.info }
         }
 
-        if (r.status === 200) {
-            // console.log(r.data)
-            return r.data;
+        if (!r.code) {
+          throw { msg: '网络错误，请稍后重试！' }
         }
 
-        if (r.data.code === 0) {
-            return r.data;
+        if (r.code === 406) {
+          router.push('/firstsetpaypwd')
         }
 
-        throw {msg: '网络错误，请稍后重试'};
+        if (r.code === 405) {
+          const current = { ...router.currentRoute }
+          router.push('/auth?redirect=' + current.path)
+        }
 
+        if (r.code === 403 || r.code === 401) {
+          if (r.code === 401) {
+            localStorage.removeItem('token')
+          }
 
-    }).then(r => {
-
-        if (r.code === 1) {
-            return r
-        } else {
-            if (r.code === 0) {
-                throw {msg: r.info}
+          const current = { ...router.currentRoute }
+          if (
+            current &&
+            current.path !== '/' &&
+            !['/', '/reg', '/forgetpwd'].includes(current.path)
+          ) {
+            if (current.path !== '/login' && current.path !== '/tree') {
+              router.replace('/login??redirect=' + current.path)
             }
-
-            if (!r.code) {
-                throw {msg: '网络错误，请稍后重试！'}
-            }
-
-            if (r.code === 406) {
-                router.push('/firstsetpaypwd');
-            }
-
-            if (r.code === 405) {
-                const current = {...router.currentRoute};
-                router.push('/auth?redirect=' + current.path);
-            }
-
-            if (r.code === 403 || r.code === 401) {
-
-                if (r.code === 401) {
-                    localStorage.removeItem('token');
-                }
-
-                const current = {...router.currentRoute};
-                if (current && current.path !== '/' && !(['/', '/reg', '/forgetpwd'].includes(current.path))) {
-                    if (current.path !== '/login' && current.path !== '/tree') {
-                        router.replace('/login??redirect=' + current.path)
-                    }
-                }
-            }
+          }
         }
+      }
 
-        throw r;
+      throw r
+    })
+    .catch(r => {
+      if (isLoad) {
+        hideLoading()
+      }
 
-    }).catch(r => {
-        if (isLoad) {
-            hideLoading();
-        }
+      var message = '网络错误，请稍后或更换网络重试！'
+      if (r.info) {
+        message = r.info
+      }
 
-        var message = '网络错误，请稍后或更换网络重试！';
-        if (r.info) {
-            message = r.info;
-        }
-		
-		if (r.msg) {
-		    message = r.msg;
-		}
+      if (r.msg) {
+        message = r.msg
+      }
 
-        if(r.msg == '还未添加收货地址'){
-            Dialog.alert({
-                title: '提示',
-                message: message,
-                showCancelButton: true,
-                confirmButtonText: "去添加",
-            }).then(() => {
-                location.href = '#address';
-                location.reload();
-            }).catch(() => {
-            
-            })
-            throw '';
-            return;
-        }
+      if (r.msg == '还未添加收货地址') {
+        Dialog.alert({
+          title: '提示',
+          message: message,
+          showCancelButton: true,
+          confirmButtonText: '去添加'
+        })
+          .then(() => {
+            location.href = '#address'
+            location.reload()
+          })
+          .catch(() => {})
+        throw ''
+        return
+      }
 
-        if(isLoad){
-            Dialog.alert({
-                title: '提示',
-                message: message
-            });
-        }
-        //Notify(message);
+      if (isLoad) {
+        Dialog.alert({
+          title: '提示',
+          message: message
+        })
+      }
+      //Notify(message);
 
-        throw '';
+      throw ''
     })
 }
