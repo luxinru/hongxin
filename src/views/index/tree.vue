@@ -6,7 +6,7 @@
         src="@/assets/hongxin/1-1 首页_slices/logo@2x.png"
         alt=""
       />
-      <div class="login">
+      <div class="login" @click="logout">
         <img src="@/assets/hongxin/1-1 首页_slices/Frame@2x.png" alt="" />
         <span>登录</span>
       </div>
@@ -25,19 +25,19 @@
     </section>
 
     <section class="fuc_bar">
-      <div class="item">
+      <div class="item" @click="handleTreeListItemClick(6)">
         <img src="@/assets/hongxin/1-1 首页_slices/积分@2x.png" alt="" />
         <span>积分</span>
       </div>
-      <div class="item">
+      <div class="item" @click="handleTreeListItemClick(14)">
         <img src="@/assets/hongxin/1-1 首页_slices/闯关@2x.png" alt="" />
         <span>闯关</span>
       </div>
-      <div class="item">
+      <div class="item" @click="handleTreeListItemClick(11)">
         <img src="@/assets/hongxin/1-1 首页_slices/排行@2x.png" alt="" />
-        <span>排行</span>
+        <span>关于我们</span>
       </div>
-      <div class="item">
+      <div class="item" @click="$router.push('index')">
         <img src="@/assets/hongxin/1-1 首页_slices/更多@2x.png" alt="" />
         <span>更多</span>
       </div>
@@ -59,7 +59,7 @@
         </template>
       </van-notice-bar>
     </section>
-    <section class="tree-notice" style="margin-top: 3px;">
+    <!-- <section class="tree-notice" style="margin-top: 3px;">
       <img
         class="img"
         src="@/assets/hongxin/1-1 首页_slices/动态@2x.png"
@@ -74,10 +74,10 @@
           <span class="icon">热门</span>
         </template>
       </van-notice-bar>
-    </section>
+    </section> -->
 
     <section class="taps">
-      <div class="left">
+      <div class="left" @click="handleTreeListItemClick(3)">
         <div class="title">
           今日运动<img
             src="@/assets/hongxin/1-1 首页_slices/hot@2x.png"
@@ -87,24 +87,24 @@
         <span>叫上好友，健康打卡</span>
       </div>
       <div class="right">
-        <div class="top">
-          <div class="title">元气奖励</div>
-          <span>清晨打卡，额外奖金</span>
+        <div class="top" @click="handleTreeListItemClick(10)">
+          <div class="title">绑定支付宝</div>
+          <span>绑定支付宝，额外奖金</span>
         </div>
-        <div class="bottom">
+        <div class="bottom" @click="handleTreeListItemClick(13)">
           <div class="title">邀请福利</div>
           <span>现金多多</span>
         </div>
       </div>
     </section>
 
-    <section class="ad">
+    <!-- <section class="ad">
       <img src="@/assets/hongxin/1-1 首页_slices/Frame 2787@2x.png" alt="" />
       <img src="@/assets/hongxin/1-1 首页_slices/Frame 2787@2x.png" alt="" />
       <img src="@/assets/hongxin/1-1 首页_slices/Frame 2787@2x.png" alt="" />
-    </section>
+    </section> -->
 
-    <section class="mission">
+    <section class="mission" @click="$router.push('index')">
       <div class="title">
         <span>任务中心</span>
         <van-icon name="arrow" size="12px" />
@@ -414,7 +414,12 @@ export default {
       if (this.indexMenuType == 4) {
         this.$router.push('/alipay')
       }
-    }
+    },
+    logout () {
+      this.$parent.setFooterType('n1')
+      localStorage.removeItem('token')
+      this.$router.replace('/login')
+    },
   }
 }
 </script>

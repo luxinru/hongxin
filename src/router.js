@@ -343,7 +343,8 @@ export default new Router({
       path: "/share",
       name: "share",
       meta: {
-        title: '邀请好友'
+        title: '邀请好友',
+        hiddenTitle: true
       },
       component: () =>
         import( /* webpackChunkName: "home" */ "./views/user/share.vue")
