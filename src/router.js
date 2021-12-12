@@ -562,6 +562,12 @@ export default new Router({
         import( /* webpackChunkName: "home" */ "./views/index/baokugz.vue")
     },
     {
+      path: "/rookie",
+      name: "rookie",
+      component: () =>
+        import( /* webpackChunkName: "home" */ "./views/index/rookie.vue")
+    },
+    {
       path: "/order",
       name: "order",
       component: () =>

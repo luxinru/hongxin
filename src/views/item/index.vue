@@ -13,21 +13,21 @@
     </section>
 
     <section class="fuc_bar">
-      <div class="item">
+      <div class="item" @click="$router.push('notice')">
         <img src="@/assets/hongxin/3-1 理财_slices/icon-公告@2x.png" alt="" />
-        <span>弘信公告</span>
+        <span>站内信</span>
       </div>
-      <div class="item">
+      <div class="item" @click="$router.push('qiandao')">
         <img src="@/assets/hongxin/3-1 理财_slices/icon-签到福利@2x.png" alt="" />
         <span>签到福利</span>
       </div>
-      <div class="item">
+      <div class="item" @click="$router.push('rookie')">
         <img src="@/assets/hongxin/3-1 理财_slices/icon-新手指引@2x.png" alt="" />
         <span>新手指引</span>
       </div>
-      <div class="item">
+      <div class="item" @click="$router.push('jackpot')">
         <img src="@/assets/hongxin/3-1 理财_slices/icon-活动红包@2x.png" alt="" />
-        <span>活动红包</span>
+        <span>我的券包</span>
       </div>
     </section>
 
@@ -43,7 +43,7 @@
       </van-notice-bar>
     </section>
 
-    <section class="novice">
+    <!-- <section class="novice">
       <div class="title">
         <span></span>
         <div>新手理财</div>
@@ -62,13 +62,13 @@
       <div class="btn">
         立即购买
       </div>
-    </section>
+    </section> -->
 
     <section class="projects">
-      <div class="title">
+      <!-- <div class="title">
         <span :class="{active: projectType === 1}" @click="projectType = 1">普通项目</span>
         <span :class="{active: projectType === 2}" @click="projectType = 2">体验项目</span>
-      </div>
+      </div> -->
       <template v-for="(item, index) in list">
         <div :key="item.id" @click="goToDetail(item.id)" :class="index === 0 ? 'item' : 'item item_border'">
             <InvestItem :invest-info="item"></InvestItem>

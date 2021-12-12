@@ -117,7 +117,7 @@
       </div>
     </section>
 
-    <section class="recommend">
+    <!-- <section class="recommend">
       <div class="title">
         <span>今日推荐</span>
         <van-icon name="arrow" size="12px" />
@@ -157,7 +157,7 @@
           <span class="btn">立即购入</span>
         </div>
       </div>
-    </section>
+    </section> -->
 
     
   </div>

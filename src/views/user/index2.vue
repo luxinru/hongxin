@@ -2,35 +2,35 @@
   <div class="page_root">
     <section class="header">
       <div class="bar">
-        <div class="item">
+        <div class="item" @click="$router.push('tree')">
           <van-icon name="wap-home-o" color="#fff" size="20px" />
           <span>主页</span>
         </div>
         个人中心
         <div class="part">
-          <div class="item">
+          <div class="item" @click="handleUSernnotice">
             <van-icon name="comment-o" color="#fff" size="20px" />
             <span>消息</span>
           </div>
-          <div class="item">
+          <!-- <div class="item" @click="handleSetting">
             <van-icon name="setting-o" color="#fff" size="20px" />
             <span>设置</span>
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
 
     <section class="info">
       <div class="detals">
-        <img src="" alt="">
+        <img src="@/assets/hongxin/mine.png" alt="">
         <div class="box">
-          <span>弘信001号</span>
-          <span>186******61</span>
+          <span>{{ data.name || '-'}}</span>
+          <span>{{ data.mobile }}</span>
           <!-- <span>上次登录时间：2021-04-11 08:10:30</span> -->
         </div>
-        <div class="btn">已签到</div>
+        <!-- <div class="btn">已签到</div> -->
       </div>
-      <div class="clockin">
+      <!-- <div class="clockin">
         <div class="item">
           <span>23</span>
           <span> 本月已打卡</span>
@@ -43,7 +43,7 @@
           <span>23</span>
           <span> 本月已打卡</span>
         </div>
-      </div>
+      </div> -->
     </section>
 
     <section class="baoku">
@@ -52,7 +52,7 @@
           <img src="@/assets/hongxin/4-1 我的_slices/logo.png" alt="">
           弘信宝
         </div>
-        <div>
+        <div @click="$router.push('baoku')">
           进入
           <van-icon name="arrow" size="12px" />
         </div>
@@ -60,59 +60,59 @@
       <div class="content">
         <div class="item">
           <span>余额</span>
-          <span>¥803,50.14</span>
+          <span>¥{{data.money}}</span>
         </div>
         <div class="item">
           <span>年化率</span>
-          <span>4.23%</span>
+          <span>{{data.vip_rate}}%</span>
         </div>
       </div>
     </section>
 
     <section class="fun">
-      <div class="item">
+      <div class="item" @click="$router.push('baoku')">
         <img src="@/assets/hongxin/4-1 我的_slices/icon-我的钱包.png" alt="">
         <span>我的钱包</span>
       </div>
 
-      <div class="item">
+      <div class="item" @click="handleMyService('funds')">
         <img src="@/assets/hongxin/4-1 我的_slices/icon-账户记录.png" alt="">
-        <span>账户记录</span>
+        <span>资金记录</span>
       </div>
 
-      <div class="item">
+      <div class="item" @click="handleMyService('touzi')">
         <img src="@/assets/hongxin/4-1 我的_slices/icon-收益记录.png" alt="">
-        <span>收益记录</span>
+        <span>投资记录</span>
       </div>
 
-      <div class="item">
+      <div class="item" @click="$router.push('bank_add')">
         <img src="@/assets/hongxin/4-1 我的_slices/icon-银联绑定.png" alt="">
         <span>银联绑定</span>
       </div>
     </section>
 
     <section class="features">
-      <div class="item">
+      <div class="item" @click="handleSetting">
         <img src="@/assets/hongxin/4-1 我的_slices/icon-账户信息.png" alt="">
         账号信息
         <van-icon name="arrow" size="12px" />
       </div>
-      <div class="item">
+      <div class="item" @click="handleRecharge">
         <img src="@/assets/hongxin/4-1 我的_slices/icon-充值.png" alt="">
         充值
         <van-icon name="arrow" size="12px" />
       </div>
-      <div class="item">
+      <div class="item" @click="handleMyService('invest')">
         <img src="@/assets/hongxin/4-1 我的_slices/icon-记录.png" alt="">
         充值记录
         <van-icon name="arrow" size="12px" />
       </div>
-      <div class="item">
+      <div class="item" @click="handleWithdraw">
         <img src="@/assets/hongxin/4-1 我的_slices/icon-提现.png" alt="">
         提现
         <van-icon name="arrow" size="12px" />
       </div>
-      <div class="item">
+      <div class="item" @click="handleMyService('cost')">
         <img src="@/assets/hongxin/4-1 我的_slices/icon-记录.png" alt="">
         提现记录
         <van-icon name="arrow" size="12px" />
@@ -120,17 +120,17 @@
     </section>
 
     <section class="features">
-      <div class="item">
+      <!-- <div class="item">
         <img src="@/assets/hongxin/4-1 我的_slices/icon-账户信息.png" alt="">
         安全中心
         <van-icon name="arrow" size="12px" />
-      </div>
-      <div class="item">
+      </div> -->
+      <div class="item" @click="handleMyService('alipay')">
         <img src="@/assets/hongxin/4-1 我的_slices/icon-支付宝.png" alt="">
         支付宝绑定
         <van-icon name="arrow" size="12px" />
       </div>
-      <div class="item">
+      <div class="item" @click="handleMyService('touzi')">
         <img src="@/assets/hongxin/4-1 我的_slices/icon-记录.png" alt="">
         投资记录
         <van-icon name="arrow" size="12px" />
@@ -138,22 +138,22 @@
     </section>
 
     <section class="features">
-      <div class="item">
+      <div class="item" @click="handleMyService('about')">
         <img src="@/assets/hongxin/4-1 我的_slices/icon-关于我们.png" alt="">
         关于我们
         <van-icon name="arrow" size="12px" />
       </div>
-      <div class="item">
+      <div class="item" @click="handleMyService('protocol')">
         <img src="@/assets/hongxin/4-1 我的_slices/icon-用户政策.png" alt="">
         用户政策
         <van-icon name="arrow" size="12px" />
       </div>
-      <div class="item">
+      <div class="item" @click="handleMyService('privacy')">
         <img src="@/assets/hongxin/4-1 我的_slices/icon-隐私协议.png" alt="">
         隐私协议
         <van-icon name="arrow" size="12px" />
       </div>
-      <div class="item">
+      <div class="item" @click="handleMyService('kefu')">
         <img src="@/assets/hongxin/4-1 我的_slices/icon-联系客服.png" alt="">
         联系客服
         <van-icon name="arrow" size="12px" />
@@ -176,133 +176,7 @@ export default {
       data: {},
       /* 待删除 */
       bg: '',
-      config: {},
-      /* 待删除 */
-      infoListOne: [
-        {
-          key: 'notice',
-          name: '站内消息',
-          style: { width: '39px', height: '39px' }
-        },
-        {
-          key: 'share',
-          name: '邀请好友',
-          subTitle: '邀请好友获得奖励',
-          style: { width: '39px', height: '39px' }
-        },
-        {
-          key: 'account',
-          name: '账户信息',
-          subTitle: '修改登陆密码和支付密码',
-          style: { width: '39px', height: '39px' }
-        },
-        {
-          key: 'about',
-          name: '关于我们',
-          style: { width: '39px', height: '39px' }
-        }
-      ],
-      infoListTwo: [
-        {
-          key: 'quanbao',
-          name: '优惠券',
-          subTitle: '7张',
-          style: { width: '39px', height: '39px' }
-        },
-        {
-          key: 'baoku',
-          name: '我的宝库',
-          style: { width: '39px', height: '39px' }
-        },
-        {
-          key: 'protocol',
-          name: '服务协议',
-          style: { width: '39px', height: '39px' }
-        },
-        {
-          key: 'privacy',
-          name: '隐私协议',
-          style: { width: '39px', height: '39px' }
-        }
-      ],
-      infoListThree: [
-        {
-          key: 'logout',
-          name: '退出登录',
-          style: { width: '39px', height: '39px' }
-        }
-      ],
-      infoListFour: [
-        {
-          key: 'invest',
-          name: '充值记录',
-          style: { width: '20px', height: '18px' }
-        },
-        {
-          key: 'cost',
-          name: '提现记录',
-          style: { width: '16px', height: '16px' }
-        },
-        {
-          key: 'touzi',
-          name: '投资记录',
-          style: { width: '18px', height: '15px' }
-        },
-        {
-          key: 'funds',
-          name: '资金明细',
-          style: { width: '15px', height: '15px' }
-        }
-      ],
-      infoListFive: [
-        {
-          key: 'logout',
-          name: '退出登录',
-          style: { width: '16px', height: '16px' }
-        }
-      ],
-      infoListOther: [
-        {
-          key: 'order',
-          name: '商城订单',
-          style: { width: '14px', height: '16px' }
-        },
-        {
-          key: 'plantTree',
-          name: '种树记录',
-          style: { width: '16px', height: '17px' }
-        },
-        {
-          key: 'shuidi',
-          name: '水滴记录',
-          style: { width: '12px', height: '18px' }
-        },
-        {
-          key: 'strategy',
-          name: '种树攻略',
-          style: { width: '14px', height: '17px' }
-        },
-        {
-          key: 'auth',
-          name: '实名认证',
-          style: { width: '17px', height: '17 px' }
-        },
-        {
-          key: 'alipay',
-          name: '绑定支付宝',
-          style: { width: '15px', height: '15px' }
-        },
-        {
-          key: 'qiandao',
-          name: '签到礼品',
-          style: { width: '16px', height: '14px' }
-        },
-        {
-          key: 'help',
-          name: '帮助中心',
-          style: { width: '18px', height: '18px' }
-        }
-      ]
+      config: {}
     }
   },
   created () {
