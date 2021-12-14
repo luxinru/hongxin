@@ -158,6 +158,11 @@
         联系客服
         <van-icon name="arrow" size="12px" />
       </div>
+      <div class="item" @click="logout()">
+        <img src="@/assets/images/my-image/service-9.png" alt="">
+        退出登录
+        <van-icon name="arrow" size="12px" />
+      </div>
     </section>
   </div>
 </template>
