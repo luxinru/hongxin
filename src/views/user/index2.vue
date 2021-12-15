@@ -39,18 +39,18 @@
           <span>{{data.integral}}</span>
           <span>我的积分</span>
         </div>
-        <div class="item">
+        <div class="item" v-if="$parent.getFooterType() === 'n2'">
           <span>{{data.ds_money}}</span>
           <span>待收本金</span>
         </div>
-        <div class="item">
+        <div class="item" v-if="$parent.getFooterType() === 'n2'">
           <span>{{data.ds_apr_money}}</span>
           <span>待收利息</span>
         </div>
       </div>
     </section>
 
-    <section class="baoku">
+    <!-- <section class="baoku">
       <div class="title">
         <div>
           <img src="@/assets/hongxin/4-1 我的_slices/logo.png" alt="" />
@@ -71,10 +71,10 @@
           <span>{{ data.vip_rate }}%</span>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <section class="fun">
-      <div class="item" @click="handleRecharge">
+      <div class="item" v-if="$parent.getFooterType() === 'n2'" @click="handleRecharge">
         <img src="@/assets/hongxin/4-1 我的_slices/icon-我的钱包.png" alt="" />
         <span>充值</span>
       </div>
@@ -84,7 +84,7 @@
         <span>资金记录</span>
       </div>
 
-      <div class="item" @click="handleMyService('touzi')">
+      <div class="item" v-if="$parent.getFooterType() === 'n2'" @click="handleMyService('touzi')">
         <img src="@/assets/hongxin/4-1 我的_slices/icon-收益记录.png" alt="" />
         <span>投资记录</span>
       </div>
@@ -101,12 +101,12 @@
         账号信息
         <van-icon name="arrow" size="12px" />
       </div>
-      <div class="item" @click="$router.push('baoku')">
-        <img src="@/assets/hongxin/4-1 我的_slices/icon-充值.png" alt="" />
-        我的钱包
+      <div class="item" v-if="$parent.getFooterType() === 'n2'" @click="$router.push('baoku')">
+        <img src="@/assets/hongxin/LOGO@2x.png" alt="" />
+        弘信宝
         <van-icon name="arrow" size="12px" />
       </div>
-      <div class="item" @click="handleMyService('invest')">
+      <div class="item" v-if="$parent.getFooterType() === 'n2'" @click="handleMyService('invest')">
         <img src="@/assets/hongxin/4-1 我的_slices/icon-记录.png" alt="" />
         充值记录
         <van-icon name="arrow" size="12px" />
@@ -123,12 +123,12 @@
       </div>
     </section>
 
-    <section class="features">
-      <!-- <div class="item">
+    <!-- <section class="features">
+      <div class="item">
         <img src="@/assets/hongxin/4-1 我的_slices/icon-账户信息.png" alt="">
         安全中心
         <van-icon name="arrow" size="12px" />
-      </div> -->
+      </div>
       <div class="item" @click="handleMyService('alipay')">
         <img src="@/assets/hongxin/4-1 我的_slices/icon-支付宝.png" alt="" />
         支付宝绑定
@@ -139,7 +139,7 @@
         投资记录
         <van-icon name="arrow" size="12px" />
       </div>
-    </section>
+    </section> -->
 
     <section class="features">
       <div class="item" @click="handleMyService('about')">

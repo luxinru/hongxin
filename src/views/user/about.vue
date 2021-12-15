@@ -34,11 +34,13 @@ export default {
   methods: {
     start() {
       Fetch("/index/about").then((res) => {
+        console.log(res)
         this.data = res.data.list;
 
         if (this.$parent.getFooterType() === "n1") {
           this.data = this.data.slice(7, this.data.length);
         }
+        console.log(this.data)
         // console.log(this.data.slice(7,this.data.length))
       });
     },

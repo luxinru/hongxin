@@ -102,7 +102,6 @@
 
 <script>
 import Fetch from '../../utils/fetch'
-import { Dialog } from 'vant'
 export default {
   name: 'info',
   data () {
@@ -125,7 +124,7 @@ export default {
     // if (this.$parent.getFooterType() === 'n2') {
     // 	this.$router.replace('/user');
     // }
-    this.$parent.footer(true, 'mission')
+    this.$parent.footer(true, 'index')
 
     var type = localStorage.getItem('footer')
     if (type) {
@@ -144,27 +143,28 @@ export default {
       })
     },
     checkin2 () {
-      Fetch('/user/sign').then(res => {
-        if (res.data.coss == 1) {
-          Dialog.alert({
-            title: '提示',
-            message: res.info,
-            showCancelButton: true,
-            confirmButtonText: '去认证'
-          })
-            .then(() => {
-              this.$router.push('/auth')
-            })
-            .catch(() => {})
-        } else {
-          this.sign_money = res.data.reward
-          this.new_sign_ok = true
-          this.$notify({
-            background: '#07c160',
-            message: '签到成功：已获得现金2元和8积分！'
-          })
-        }
-      })
+      this.$router.push('qiandao')
+      // Fetch('/user/sign').then(res => {
+      //   if (res.data.coss == 1) {
+      //     Dialog.alert({
+      //       title: '提示',
+      //       message: res.info,
+      //       showCancelButton: true,
+      //       confirmButtonText: '去认证'
+      //     })
+      //       .then(() => {
+      //         this.$router.push('/auth')
+      //       })
+      //       .catch(() => {})
+      //   } else {
+      //     this.sign_money = res.data.reward
+      //     this.new_sign_ok = true
+      //     this.$notify({
+      //       background: '#07c160',
+      //       message: '签到成功：已获得现金2元和8积分！'
+      //     })
+      //   }
+      // })
     },
     start () {
       setTimeout(() => {
