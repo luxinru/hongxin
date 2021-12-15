@@ -36,7 +36,12 @@
         v-bind:style="{ display: j === dh_index ? 'flex' : 'none' }"
         :key="j"
       >
-        <div class="item" v-for="(item2, j_num) in item.list" :key="j_num">
+        <div
+          class="item"
+          v-for="(item2, j_num) in item.list"
+          :key="j_num"
+          @click="toDetails(item2.id, dh_num[j][j_num])"
+        >
           <img :src="item2.img" alt="" />
           <span class="item_title">{{ item2.title }}</span>
           <span class="item_value">{{ item2.integral }}积分</span>
@@ -135,16 +140,12 @@ export default {
         }
       })
     },
-    category_btn(id, num) {
-      Fetch('/index/shop_exchange', {
-        gid: id,
-        num: num,
-      }).then((res) => {
-        this.$notify({
-          background: '#07c160',
-          message: res.info,
-        })
-        this.start()
+    toDetails(id, num) {
+      this.$router.push({
+        path: '/goods_details/' + id,
+        query: {
+          num,
+        },
       })
     },
   },

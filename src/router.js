@@ -406,7 +406,8 @@ export default new Router({
       path: "/goods_details/:id",
       name: "goods_details",
       meta: {
-        title: '产品详情'
+        title: '产品详情',
+        hiddenTitle: true
       },
       component: () =>
         import( /* webpackChunkName: "home" */ "./views/index/goods_details.vue")
