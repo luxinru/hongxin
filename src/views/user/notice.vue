@@ -30,48 +30,48 @@
 </template>
 
 <script>
-import Fetch from "../../utils/fetch";
-import moment from "moment";
+import Fetch from '../../utils/fetch'
+import moment from 'moment'
 
 export default {
-  name: "login",
+  name: 'login',
   data() {
     return {
       data: [],
       selectIndex: 0,
-    };
+    }
   },
   created() {
-    this.$parent.footer(false);
+    this.$parent.footer(false)
   },
   filters: {
     dateFormat(time) {
-      return moment(time).format("YYYY-MM-DD");
+      return moment(time).format('YYYY-MM-DD')
     },
   },
   mounted() {
-    this.start();
+    this.start()
   },
   methods: {
     start() {
-      Fetch("/user/notice").then((r) => {
-        this.data = r.data;
-      });
+      Fetch('/user/notice').then((r) => {
+        this.data = r.data
+      })
 
-      console.log(this.data);
+      console.log(this.data)
     },
     onClickLeft() {
-      this.$router.back();
+      this.$router.back()
     },
     back() {
-      this.$router.back();
+      this.$router.back()
     },
     changeBar(index) {
-      console.log(1);
-      this.selectIndex = index;
+      console.log(1)
+      this.selectIndex = index
     },
   },
-};
+}
 </script>
 
 <style lang="less" scoped>
@@ -114,7 +114,7 @@ export default {
     position: relative;
     width: 351px;
     height: 78px;
-    background: #FFFFFF;
+    background: #ffffff;
     border-radius: 10px;
     display: flex;
     flex-direction: column;

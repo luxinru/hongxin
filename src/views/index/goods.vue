@@ -2,12 +2,17 @@
   <div class="page_root">
     <section class="header">
       <div class="title">
-        <van-icon name="arrow-left" size="16px" color="#fff" @click="$router.go(-1)" />
+        <van-icon
+          name="arrow-left"
+          size="16px"
+          color="#fff"
+          @click="$router.go(-1)"
+        />
         积分商城
       </div>
       <span class="label">我的积分</span>
       <span class="value">{{ mydata.integral }}</span>
-      <div class="footer">
+      <div class="footer" v-if="footer_type === 'n2'">
         <div class="item">
           <img src="@/assets/hongxin/2-7 积分商城_slices/积分奖励.png" alt="" />
           现在投资有积分奖励
@@ -39,93 +44,13 @@
       </div>
     </section>
   </div>
-  <!-- <div class="mobile">
-    <div class="header">
-      <div class="head">
-        <div @click="$router.push('/tree')">
-          <van-icon
-            name="arrow-left"
-            size="20"
-            color="#ffffff"
-            style="vertical-align: middle"
-          />
-        </div>
-        <div>积分商城</div>
-        <div></div>
-      </div>
-    </div>
-    <div class="goods-header-box">
-      <div class="integral-info">
-        <p style="padding: 57px 0 19px 0; font-size: 33px; font-weight: bold">
-          {{ mydata.integral }}
-        </p>
-        <p>当前积分</p>
-      </div>
-    </div>
-    <div class="goods-content-box">
-      <div class="my-integral-info-box">
-
-        <div class="address-btn-box">
-          <div class="address-btn" @click="$router.push('/qiandao')">
-            <img src="./image/gs1.png" />
-            <p>每日签到</p>
-          </div>
-          <div class="address-btn" @click="$router.push('/address')">
-            <img src="./image/gs2.png" />
-            <p>发货地址</p>
-          </div>
-          <div class="address-btn" @click="$router.push('/integral')">
-            <img src="./image/gs3.png" />
-            <p>积分明细</p>
-          </div>
-          <div class="address-btn" @click="$router.push('/order')">
-            <img src="./image/gs4.png" />
-            <p>我的订单</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="goodsBox">
-      <div
-        class="qd-list"
-        v-for="(item, j) in category_data.category"
-        v-bind:style="{ display: j === dh_index ? 'block' : 'none' }"
-        :key="j"
-      >
-        <div
-          class="items"
-          v-for="(item2, j_num) in item.list"
-          :key="j_num"
-          style="margin-bottom: 10px"
-        >
-          <img :src="item2.img" />
-          <div>
-            <p class="name">{{ item2.title }}</p>
-            <p class="qd">限量500份</p>
-            <div class="qd-box">
-              <div class="qd-left">
-                <p class="qd-title1">234人已领</p>
-                <p class="qd-title2">{{ item2.integral }} 积分</p>
-              </div>
-              <div
-                class="btn"
-                @click="category_btn(item2.id, dh_num[j][j_num])"
-              >
-                立即兑换
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
 </template>
 
 <script>
-import Fetch from "../../utils/fetch";
+import Fetch from '../../utils/fetch'
 
 export default {
-  name: "shop",
+  name: 'shop',
   data() {
     return {
       mydata: {},
@@ -136,7 +61,7 @@ export default {
       is_sleep: false,
       show_water: true,
       show_manure: true,
-      treeImg: "",
+      treeImg: '',
       dh_num: [],
       only_num: 1,
       sign_ok: false,
@@ -147,34 +72,39 @@ export default {
       add_res: false,
       only_money: false,
       money_icon_show: false,
-      show_delay_animate: "",
-      level_lc: "lv2",
-      horn_msg: "",
-      jump_url: "/item",
-      fly_go: "",
+      show_delay_animate: '',
+      level_lc: 'lv2',
+      horn_msg: '',
+      jump_url: '/item',
+      fly_go: '',
       hide_tree: [],
-      progress: "0%",
+      progress: '0%',
       notice_num: 1,
-      mp3: "",
+      mp3: '',
       sign_money: 0,
-      dh_btn_type: "",
-      water_time: "每日0点—24点",
-      water_rule: "cs2",
+      dh_btn_type: '',
+      water_time: '每日0点—24点',
+      water_rule: 'cs2',
       rule_dh: false,
-      rule_msg: "cs",
-    };
+      rule_msg: 'cs',
+    }
+  },
+  computed: {
+    footer_type() {
+      return localStorage.getItem('footer')
+    },
   },
   created() {
-    this.$parent.footer(false);
+    this.$parent.footer(false)
   },
   mounted() {
     setTimeout(function () {
-      document.getElementById("app").style.marginBottom = 0;
-    }, 100);
-    this.mp3 = require("./image/didi.mp3");
-    this.start();
-    if (location.href.indexOf("openshop") != -1) {
-      this.shop_show = true;
+      document.getElementById('app').style.marginBottom = 0
+    }, 100)
+    this.mp3 = require('./image/didi.mp3')
+    this.start()
+    if (location.href.indexOf('openshop') != -1) {
+      this.shop_show = true
     }
 
     // $(window).resize(function(){
@@ -186,41 +116,41 @@ export default {
   },
   methods: {
     start() {
-      Fetch("/user/info").then((res) => {
-        this.mydata = res.data;
-      });
+      Fetch('/user/info').then((res) => {
+        this.mydata = res.data
+      })
       // 兑换信息
-      Fetch("/index/goods_list").then((res) => {
-        this.category_data = res.data;
-        console.log(this.category_data);
+      Fetch('/index/goods_list').then((res) => {
+        this.category_data = res.data
+        console.log(this.category_data)
         for (var i = 0; i < res.data.category.length; i++) {
-          this.dh_num.push([]);
+          this.dh_num.push([])
           for (var j = 0; j < res.data.category[i].list.length; j++) {
-            this.dh_num[i].push(1);
+            this.dh_num[i].push(1)
           }
         }
         if (res.data.exchange_rules.content || res.data.exchange_rules.title) {
           this.rule_msg =
-            res.data.exchange_rules.content || res.data.exchange_rules.title;
+            res.data.exchange_rules.content || res.data.exchange_rules.title
         }
-      });
+      })
     },
     category_btn(id, num) {
-      Fetch("/index/shop_exchange", {
+      Fetch('/index/shop_exchange', {
         gid: id,
         num: num,
       }).then((res) => {
         this.$notify({
-          background: "#07c160",
+          background: '#07c160',
           message: res.info,
-        });
-        this.start();
-      });
+        })
+        this.start()
+      })
     },
   },
-};
+}
 </script>
 
 <style scoped lang="less">
-@import "goods.less";
+@import 'goods.less';
 </style>

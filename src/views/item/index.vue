@@ -160,7 +160,7 @@ export default {
         this.filterList()
       })
 
-      Fetch('/index/banner', {
+      Fetch('/index/banner_activity', {
         type: 'banner'
       }).then(res => {
         this.banner = res.data

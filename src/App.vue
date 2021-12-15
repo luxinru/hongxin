@@ -109,7 +109,7 @@
         />
         <span :class="{active: show_type == 'index'}">打卡</span>
       </router-link>
-      <router-link class="footer_item" to="/info">
+      <router-link class="footer_item" to="/user">
         <img
           :src="
             show_type == 'info'
@@ -261,7 +261,8 @@ export default {
           null,
           false
         ).then(r => {
-          this.footer_type = r.data.footer
+          this.setFooterType(r.data.footer)
+          // this.setFooterType('n1')
           if (r.data.is_open_notice_dialog) {
             this.openNoticeDialog()
           }

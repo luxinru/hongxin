@@ -125,6 +125,9 @@ export default new Router({
     {
       path: "/notice/:id",
       name: "notice_content",
+      meta: {
+        title: '消息'
+      },
       component: () =>
         import( /* webpackChunkName: "home" */ "./views/user/notice_content.vue")
     },

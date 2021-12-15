@@ -16,7 +16,7 @@
       <van-swipe @change="onChange" :autoplay="5000">
         <van-swipe-item v-for="(image, index) in banner" :key="index">
           <img
-            style="width:100%;height: 100%;"
+            style="width: 100%; height: 100%"
             :src="image.thumb"
             @click="$router.push({ path: image.url.replace('#/', '') })"
           />
@@ -113,7 +113,7 @@
         <span>弘信·任务大师</span>
         <span>任务列表里的任务</span>
         <span>都对应着丰富奖励</span>
-        <span>GO<van-icon name="arrow" size="12px"/></span>
+        <span>GO<van-icon name="arrow" size="12px" /></span>
       </div>
     </section>
 
@@ -158,8 +158,6 @@
         </div>
       </div>
     </section> -->
-
-    
   </div>
 </template>
 
@@ -169,7 +167,7 @@ import { Dialog } from 'vant'
 export default {
   name: 'index',
   components: {},
-  data () {
+  data() {
     return {
       playerOptions: {
         // playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
@@ -183,8 +181,8 @@ export default {
         sources: [
           {
             src: 'https://rcguanjia.com/mp4/zhounianqing.mp4', // 路径
-            type: 'video/mp4' // 类型
-          }
+            type: 'video/mp4', // 类型
+          },
         ],
         // poster: "https://www.njmbttd.com/upload/dongli.jpg", //你的封面地址
         // width: document.documentElement.clientWidth,
@@ -193,13 +191,13 @@ export default {
           timeDivider: true,
           durationDisplay: true,
           remainingTimeDisplay: false,
-          fullscreenToggle: true //全屏按钮
-        }
+          fullscreenToggle: true, //全屏按钮
+        },
       },
       footer_type: 'n1',
       data: {
         app: {},
-        notice: ''
+        notice: '',
       },
       down_show: true,
       link_width: 0,
@@ -213,20 +211,20 @@ export default {
         {
           id: '1',
           name: 'one',
-          question: '...'
-        }
+          question: '...',
+        },
       ],
-      indexMenuType: 1
+      indexMenuType: 1,
     }
   },
   computed: {
-    indexMenuInfoBackClasses () {
+    indexMenuInfoBackClasses() {
       return `info-back-class-${this.indexMenuType}`
-    }
+    },
   },
-  created () {
+  created() {
     if (this.$parent.getFooterType() === 'n1') {
-      this.$router.push('/tree').catch(err => {
+      this.$router.push('/tree').catch((err) => {
         err
       })
       this.$parent.footer(true, 'tree')
@@ -235,7 +233,7 @@ export default {
       this.$data.footer_type = 'n2'
     }
   },
-  mounted () {
+  mounted() {
     this.start()
     var that = this
     var bslua = navigator.userAgent
@@ -244,13 +242,13 @@ export default {
     }
   },
   methods: {
-    getIputValue (index) {
+    getIputValue(index) {
       // console.log(index + 1 + "题" + this.radio);
       this.allRadio[index] = this.radio[index] // 将数据存入提交给后台的数据中
       console.log(this.allRadio)
       // console.log(this.radio)
     },
-    toBox (title = '', contain = '') {
+    toBox(title = '', contain = '') {
       var newsBox = document.getElementsByClassName('modal')[0]
       newsBox.style.display = 'block'
 
@@ -259,14 +257,14 @@ export default {
       var newsTitle = document.getElementsByClassName('news-title')[0]
       newsTitle.innerText = title
     },
-    checkin2 () {
-      Fetch('/user/sign').then(res => {
+    checkin2() {
+      Fetch('/user/sign').then((res) => {
         if (res.data.coss == 1) {
           Dialog.alert({
             title: '提示',
             message: res.info,
             showCancelButton: true,
-            confirmButtonText: '去认证'
+            confirmButtonText: '去认证',
           })
             .then(() => {
               this.$router.push('/auth')
@@ -277,35 +275,35 @@ export default {
           this.new_sign_ok = true
           this.$notify({
             background: '#07c160',
-            message: '签到成功：已获得现金2元和8积分！'
+            message: '签到成功：已获得现金2元和8积分！',
           })
         }
       })
     },
-    closeBox () {
+    closeBox() {
       var newsBox = document.getElementsByClassName('modal')[0]
       newsBox.style.display = 'none'
     },
 
-    appdown_close () {
+    appdown_close() {
       this.data.app.is_disable = 'N'
     },
-    goAd () {
+    goAd() {
       // this.close();
       // this.$router.push(this.ad.url).catch(err => {err});
       this.close()
       this.$router.push(this.ad.url)
     },
-    close () {
+    close() {
       this.ad_show = false
     },
-    start () {
+    start() {
       setTimeout(() => {
         var element = document.getElementById('app')
         element.scrollIntoView()
       }, 0)
       this.type = this.$parent.getFooterType()
-      Fetch('/index/int').then(res => {
+      Fetch('/index/int').then((res) => {
         this.ad = res.data.ad
         this.data = res.data
 
@@ -322,36 +320,36 @@ export default {
                 }); */
 
       Fetch('/index/banner', {
-        type: 'banner'
-      }).then(res => {
+        type: 'banner',
+      }).then((res) => {
         this.banner = res.data
       })
     },
-    onChange (index) {
+    onChange(index) {
       let els = this.$refs.dian.querySelectorAll('div')
       for (let i = 0; i < els.length; i++) {
         els[i].className = ''
       }
       els[index].className = 'selected'
     },
-    schedule (schedule) {
+    schedule(schedule) {
       return {
-        width: schedule + '%'
+        width: schedule + '%',
       }
     },
-    schedule_left (schedule) {
+    schedule_left(schedule) {
       if (schedule > 80) {
         return {
           left: schedule - 30 + '%',
-          color: '#fff'
+          color: '#fff',
         }
       } else {
         return {
-          left: schedule.slice(0, 5) + '%'
+          left: schedule.slice(0, 5) + '%',
         }
       }
     },
-    handleTreeListItemClick (type = 1) {
+    handleTreeListItemClick(type = 1) {
       switch (type) {
         case 1:
           this.$router.push({ name: 'qiandao' })
@@ -397,11 +395,11 @@ export default {
           break
       }
     },
-    handleMenuSwitch (type) {
+    handleMenuSwitch(type) {
       if (this.indexMenuType === type) return
       this.indexMenuType = type
     },
-    goToDetail () {
+    goToDetail() {
       if (this.indexMenuType == 1) {
         this.handleTreeListItemClick(9)
       }
@@ -415,12 +413,12 @@ export default {
         this.$router.push('/alipay')
       }
     },
-    logout () {
+    logout() {
       this.$parent.setFooterType('n1')
       localStorage.removeItem('token')
       this.$router.replace('/login')
     },
-  }
+  },
 }
 </script>
 

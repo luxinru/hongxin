@@ -416,7 +416,7 @@ export default {
   width: 348px;
   height: 89px;
   border-radius: 7px;
-  margin: 0 auto;
+  margin: 16px auto;
 
   .everybtn {
     width: 166px;
