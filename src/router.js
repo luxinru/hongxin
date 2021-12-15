@@ -365,7 +365,7 @@ export default new Router({
       path: "/item/:id",
       name: "details",
       meta: {
-        title: '投资详情'
+        title: '弘信理财', hiddenTitle: true
       },
       component: () =>
         import( /* webpackChunkName: "home" */ "./views/item/details.vue")
@@ -374,7 +374,7 @@ export default new Router({
       path: "/item/apply/:id",
       name: "apply",
       meta: {
-        title: '立即投标'
+        title: '立即投标', hiddenTitle: true
       },
       component: () =>
         import( /* webpackChunkName: "home" */ "./views/item/apply.vue")

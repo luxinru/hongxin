@@ -26,24 +26,28 @@
         <div class="box">
           <span>{{ data.name || '-' }}</span>
           <span>{{ data.mobile }}</span>
-          <!-- <span>上次登录时间：2021-04-11 08:10:30</span> -->
+          <span>{{ data.vip_name }} 成长值：{{data.manure}}</span>
         </div>
         <!-- <div class="btn">已签到</div> -->
       </div>
-      <!-- <div class="clockin">
+      <div class="clockin">
         <div class="item">
-          <span>23</span>
-          <span> 本月已打卡</span>
+          <span>{{data.money}}</span>
+          <span>账户余额</span>
         </div>
         <div class="item">
-          <span>23</span>
-          <span> 本月已打卡</span>
+          <span>{{data.integral}}</span>
+          <span>我的积分</span>
         </div>
         <div class="item">
-          <span>23</span>
-          <span> 本月已打卡</span>
+          <span>{{data.ds_money}}</span>
+          <span>待收本金</span>
         </div>
-      </div> -->
+        <div class="item">
+          <span>{{data.ds_apr_money}}</span>
+          <span>待收利息</span>
+        </div>
+      </div>
     </section>
 
     <section class="baoku">
