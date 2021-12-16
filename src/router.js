@@ -512,12 +512,18 @@ export default new Router({
     {
       path: "/editaddress/:id",
       name: "updateeditaddress",
+      meta: {
+        title: '编辑地址'
+      },
       component: () =>
         import( /* webpackChunkName: "home" */ "./views/user/editaddress.vue")
     },
     {
       path: "/editaddress",
       name: "addeditaddress",
+      meta: {
+        title: '添加地址'
+      },
       component: () =>
         import( /* webpackChunkName: "home" */ "./views/user/editaddress.vue")
     },

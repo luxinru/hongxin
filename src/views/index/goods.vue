@@ -12,14 +12,16 @@
       </div>
       <span class="label">我的积分</span>
       <span class="value">{{ mydata.integral }}</span>
-      <div class="footer" v-if="footer_type === 'n2'">
-        <div class="item">
-          <img src="@/assets/hongxin/2-7 积分商城_slices/积分奖励.png" alt="" />
-          现在投资有积分奖励
+      <div class="footer">
+        <div class="item" @click="$router.push('order')">
+          <!-- <img src="@/assets/hongxin/2-7 积分商城_slices/积分奖励.png" alt="" />
+          现在投资有积分奖励 -->
+          我的订单
         </div>
-        <div class="item">
-          立即投资
-          <van-icon name="arrow" size="12px" />
+        <div class="item" @click="$router.push('address')">
+          <!-- 立即投资
+          <van-icon name="arrow" size="12px" /> -->
+          收货地址
         </div>
       </div>
     </section>

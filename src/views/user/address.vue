@@ -1,204 +1,195 @@
 <template>
-    <div>
-        <div id="header">
-            <div class="header">
-                <span class="back" @click="$router.push('/goods')"></span>
-                <span class="add" @click="$router.push('/editaddress')">添加新地址</span>
-                添加新地址
-            </div>
-        </div>
-        <div class="address_wrap">
-            <div class="item" v-for="(v,k) in data.list" :key="k" :class="v.is_default === 'Y' ? 'item_default' : ''">
-                <div class="center">
-                    <div class="center_top">
-                        <span class="item_name">{{v.name}}</span><span class="item_mobile">{{v.tel}}</span>
-                    </div>
-                    <div class="center_bottom">{{v.province}} {{v.city}} {{v.county}} {{v.address}}</div>
-                </div>
-                <span class="right" @click="$router.push('/editaddress/' + v.id)">编辑</span>
-            </div>
-            <!--            &lt;!&ndash; 默认地址加class item_default &ndash;&gt;-->
-            <!--            <div class="item item_default">-->
-            <!--                <span class="left"></span>-->
-            <!--                <div class="center">-->
-            <!--                    <div class="center_top">-->
-            <!--                        <span class="item_name">X先生</span><span class="item_mobile">15888888888</span>-->
-            <!--                    </div>-->
-            <!--                    <div class="center_bottom">xx省 xx市 xx区 xx小区1栋2单元xxxx</div>-->
-            <!--                </div>-->
-            <!--                <span class="right">编辑</span>-->
-            <!--            </div>-->
-        </div>
+  <div class="page_root">
+    <div class="header">
+      <van-icon
+        name="arrow-left"
+        @click="$router.go(-1)"
+        size="16px"
+        color="#fff"
+      />
+      收货地址
+      <van-icon
+        name="plus"
+        @click="$router.push('/editaddress')"
+        size="16px"
+        color="#fff"
+      />
     </div>
+    <div class="address_wrap">
+      <template v-if="data.list && data.list.length">
+        <div class="item" v-for="(v, k) in data.list" :key="k">
+          <!-- :class="v.is_default === 'Y' ? 'item_default' : ''" -->
+          <div class="center_top">
+            <span class="item_name">{{ v.name }}</span
+            ><span class="item_mobile">{{ v.tel }}</span>
+          </div>
+          <div class="center_bottom">
+            {{ v.province }} {{ v.city }} {{ v.county }} {{ v.address }}
+          </div>
+          <div class="footer">
+            <van-checkbox
+              v-model="v.selected"
+              checked-color="RGBA(108, 77, 217, 1)"
+              icon-size="16px"
+              >默认地址</van-checkbox
+            >
+            <van-icon
+              name="edit"
+              size="16px"
+              @click="$router.push('/editaddress/' + v.id)"
+            />
+          </div>
+        </div>
+      </template>
+      <template v-else>
+        <div class="no_data">
+          <img
+            src="@/assets/hongxin/2-11 🆕 地址-无地址_slices/Delivery address-rafiki 1.png"
+            alt=""
+          />
+
+          <div class="btn" @click="$router.push('/editaddress')">
+            添加收货地址
+          </div>
+        </div>
+      </template>
+    </div>
+  </div>
 </template>
 
 <script>
+import Fetch from '../../utils/fetch'
 
-    import Fetch from '../../utils/fetch'
-
-    export default {
-        name: "index",
-        components: {},
-        data() {
-            return {
-                data: {},
-                money_info: '',
-                money: '',
-            };
-        },
-        created() {
-            this.$parent.footer(false);
-        },
-        mounted() {
-            this.start();
-        },
-        methods: {
-            start() {
-
-                Fetch('/user/address').then(res => {
-                    this.data = res.data;
-                })
-
-            },
+export default {
+  name: 'index',
+  components: {},
+  data() {
+    return {
+      data: {},
+      money_info: '',
+      money: '',
+    }
+  },
+  created() {
+    this.$parent.footer(false)
+  },
+  mounted() {
+    this.start()
+  },
+  methods: {
+    start() {
+      Fetch('/user/address').then((res) => {
+        if (res.data.list && res.data.list.length) {
+          res.data.list.forEach((item) => {
+            item.selected = item.is_default === 'Y'
+          })
         }
-    };
+
+        this.data = res.data
+      })
+    },
+  },
+}
 </script>
 
 <style lang="less" scoped>
-    html,
-    body {
-        background: #fff;
-    }
+.page_root {
+  padding: 48px 12px;
+  .header {
+    position: fixed;
+    width: 100%;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    background: RGBA(108, 77, 217, 1);
+    font-size: 18px;
+    font-weight: 500;
+    color: #ffffff;
+  }
 
-    #header {
+  .address_wrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .item {
+      width: 351px;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      margin-top: 12px;
+
+      .center_top {
         width: 100%;
-        height: 50px;
-    }
-
-    #header .header {
-        height: 50px;
-        position: fixed;
-        width: 100%;
-        border-bottom: 1px solid #e7e7e7;
-        z-index: 20;
-        background: #f4f4f4;
-        
-        color: #000000;
-        font-weight: 550;
-        font-size: 5vw;
-        text-align: center;
-        line-height: 50px;
-    }
-
-    #header .header .back {
-        display: inline-block;
-        width: 18px;
-        height: 18px;
-        background-image: url(../index/image/back.png);
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: center;
-        position: absolute;
-        top: 50%;
-        -webkit-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-        transform: translateY(-50%);
-        left: 10px;
-        z-index: 21;
-    }
-	
-	
-	
-	
-    #header .header .add {
-        display: inline-block;
-        font-size: 14px;
-        color: #3e3e3e;
-        position: absolute;
-        top: 50%;
-        -webkit-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-        transform: translateY(-50%);
-        right: 10px;
-        z-index: 21;
-    }
-
-    .address_wrap {
-        width: 100%;
-    }
-
-    .address_wrap .item {
-        display: -webkit-box;
-        display: -ms-flexbox;
         display: flex;
-        padding: 14px 10px;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-        justify-content: space-between;
-    }
+        align-items: flex-end;
 
-    .address_wrap .item .left {
-        -webkit-box-flex: 0;
-        -ms-flex: 0 0 34px;
-        flex: 0 0 34px;
-        height: 34px;
-        border-radius: 34px;
-        background: #b0b2b4;
-        color: #ffffff;
+        .item_name {
+          font-size: 16px;
+          font-weight: 500;
+          color: #333333;
+        }
+
+        .item_mobile {
+          font-size: 14px;
+          font-weight: 400;
+          color: #1c1d38;
+          margin-left: 8px;
+        }
+      }
+
+      .center_bottom {
         font-size: 14px;
-        text-align: center;
-        line-height: 34px;
-    }
+        font-weight: 400;
+        color: #666666;
+        margin-top: 8px;
+      }
 
-    .address_wrap .item .center {
-        -webkit-box-flex: 1;
-        -ms-flex: 1 1 auto;
-        flex: 1 1 auto;
-        padding: 0 16px 0 10px;
-        max-width:80%;
-    }
-
-    .address_wrap .item .center .center_top {
-        font-size: 15px;
-        color: #313131;
-        margin-bottom: 2px;
-    }
-
-    .address_wrap .item .center .center_top .item_mobile {
-        font-size: 13px;
-        color: #a1a1a1;
-        margin-left: 18px;
-    }
-
-    .address_wrap .item .center .center_bottom {
-        font-size: 15px;
-        color: #3e3e3e;
-        line-height: 1.7;
+      .footer {
         width: 100%;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 16px;
+        border-top: 1px solid rgba(242, 242, 242, 1);
+        margin-top: 16px;
+        font-size: 14px;
+        font-weight: 400;
+        color: #666666;
+      }
+    }
+  }
+
+  .no_data {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      width: 250px;
+      height: 250px;
+      margin-top: 101px;
     }
 
-    .address_wrap .item .right {
-        -webkit-box-flex: 0;
-        -ms-flex: 0 0 40px;
-        flex: 0 0 40px;
-        text-align: right;
-        line-height: 24px;
-        height: 24px;
-        color: #979797;
-        font-size: 13px;
-        border-left: 1px solid #ededed;
+    .btn {
+      width: 295px;
+      height: 55px;
+      background: linear-gradient(90deg, #6c4dd9 0%, #4d5bd9 100%);
+      border-radius: 50px;
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      font-weight: 500;
+      color: #ffffff;
     }
-
-    .address_wrap .item.item_default .left {
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
-        background-image: url(./images/home.svg);
-    }
+  }
+}
 </style>

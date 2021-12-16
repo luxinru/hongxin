@@ -357,4 +357,8 @@ export default {
   box-sizing: border-box;
   flex-shrink: 0;
 }
+
+.van-field__control {
+  flex: 1 0 !important;
+}
 </style>

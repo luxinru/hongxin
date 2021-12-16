@@ -307,7 +307,7 @@ export default {
 
 <style lang="less">
 .van-swipe {
-  height: 180px;
+  height: 240px;
 }
 
 .van-notice-bar {

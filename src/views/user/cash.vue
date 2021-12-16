@@ -38,14 +38,8 @@
       <p class="cash-title">提现说明</p>
       <div>
         <p>1.注册、签到、实名认证赠送的现金为系统福利</p>
-        <p>2.投资500元，就会有500流水</p>
         <p>
-          3.流水未达到1500元,账户上的系统福利不可提出，系统送的福利金额可参与投资<span
-            >(您充值的本金可以随时提，不受流水影啊)</span
-          >
-        </p>
-        <p>
-          4.工作时间提现,9:00-23:00,都是即时到账，夜间提现,次日处理。因公司账户跨行转账,要具体根据您的银行卡到账时间为准,正常是两个小时内到账
+          2.工作时间提现,9:00-23:00,都是即时到账，夜间提现,次日处理。因公司账户跨行转账,要具体根据您的银行卡到账时间为准,正常是两个小时内到账
         </p>
       </div>
     </div>
@@ -68,27 +62,27 @@ export default {
   name: 'index',
   components: {
     'bank-select': select,
-    headers
+    headers,
   },
-  data () {
+  data() {
     return {
       show: false,
       data: {},
       bank: {},
       bank_id: 0,
       money: '',
-      passwd: ''
+      passwd: '',
     }
   },
-  created () {
+  created() {
     this.$parent.footer(false)
   },
-  mounted () {
+  mounted() {
     this.start()
   },
   methods: {
-    start () {
-      Fetch('/user/cost_bank').then(res => {
+    start() {
+      Fetch('/user/cost_bank').then((res) => {
         this.data = res.data
         this.bank = res.data.bank
       })
@@ -98,7 +92,7 @@ export default {
         this.$refs.add.click()
       }
     },
-    handleSubmit () {
+    handleSubmit() {
       if (!this.bank.id && this.bank.id != 0) {
         this.$notify('请选择提现银行卡')
         return
@@ -112,37 +106,34 @@ export default {
       Fetch('/user/cost_apply', {
         money: this.money,
         bank_id: this.bank.id,
-        passwd: this.passwd
+        passwd: this.passwd,
       }).then(() => {
         this.$notify({
           background: '#07c160',
-          message: '提现申请成功'
+          message: '提现申请成功',
         })
 
         this.$router.back()
       })
     },
-    editCardNum (id) {
+    editCardNum(id) {
       if (!id) return ''
       const len = id.length
       const reLastNum = `${id.charAt(len - 1)}${id.charAt(len - 2)}${id.charAt(
         len - 3
       )}${id.charAt(len - 4)}`
       const newId = reLastNum.padEnd(len, '*').replace(/(.{4})/g, '$1 ')
-      return newId
-        .split('')
-        .reverse()
-        .join('')
+      return newId.split('').reverse().join('')
     },
-    selected (bank) {
+    selected(bank) {
       this.show = false
       this.bank = bank
     },
     // 忘记密码
-    handleForgetPassword () {
+    handleForgetPassword() {
       this.$router.push({ name: 'resetpaypwd' })
-    }
-  }
+    },
+  },
 }
 </script>
 

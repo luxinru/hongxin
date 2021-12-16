@@ -11,13 +11,6 @@
         弘信理财
         <span></span>
       </div>
-
-      <div class="info">
-        <span class="label">项目规模</span>
-        <span class="value">{{ data.total }}万元</span>
-      </div>
-
-      <div class="qx">投资期限: {{ data.day }}天</div>
     </div>
     <div class="project-container">
       <div class="project-name">{{ data.title }}</div>
@@ -25,6 +18,8 @@
       <div class="project-tag-box">
         <div class="project-tag-item bq1">{{ data.type_name }}</div>
         <div class="project-tag-item bq2">{{ data.min }}起投</div>
+        <div class="project-tag-item bq3">项目规模：{{ data.total }}万元</div>
+        <div class="project-tag-item bq2">投资期限: {{ data.day }}天</div>
       </div>
       <div class="project-info-list">
         <div class="project-info-list-item">
@@ -155,14 +150,14 @@
             }}对平台上的每一笔投资提供100%本金保障，平台设立风险备用金，对本金承诺全额垫付
           </div>
         </div>
-        <div class="project-investment-info-item">
+        <!-- <div class="project-investment-info-item">
           <div class="project-investment-info-item-left">推荐奖励</div>
           <div class="project-investment-info-item-right">
             在会员中心最下面(邀请好友)转发到您朋友圈里,只要您朋友通过邀请二维码注册的为一级,充值并成功投资一次性还款项目,您就可以得到按投资金额{{
               data.invest1
             }}%的奖励,注册成功后，系统自动赠送 ！
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
     <!--发展规划-->
@@ -203,13 +198,13 @@
     <!--<div style="margin-top:-60px;"><img :src="data.thumb2" alt="" style="width:100%;"></div>-->
     <!--<div style="margin-top:20px;margin-bottom:20px;"><img :src="data.thumb3" alt="" style="width:100%;"></div>-->
     <!--投资按钮-->
-    <!--<div class="project-other-info-box imgBox">-->
-    <!--    &lt;!&ndash; <img v-if="data.thumb" :src="imgPre+data.thumb" alt="" srcset=""> &ndash;&gt;-->
-    <!--    <img v-if="data.thumb2" :src="data.thumb2" alt="" srcset="">-->
-    <!--    <img v-if="data.thumb3" :src="data.thumb3" alt="" srcset="">-->
-    <!--    <img v-if="data.thumb4" :src="data.thumb4" alt="" srcset="">-->
-    <!--    <img v-if="data.thumb5" :src="data.thumb5" alt="" srcset="">-->
-    <!--</div>-->
+    <div class="project-other-info-box imgBox">
+       <img v-if="data.thumb" :src="data.thumb" alt="" srcset="">
+       <!-- <img v-if="data.thumb2" :src="data.thumb2" alt="" srcset="">
+       <img v-if="data.thumb3" :src="data.thumb3" alt="" srcset="">
+       <img v-if="data.thumb4" :src="data.thumb4" alt="" srcset="">
+       <img v-if="data.thumb5" :src="data.thumb5" alt="" srcset=""> -->
+    </div>
     <div class="investment-btn-box">
       <div class="investment-btn" @click="handleInvestment">立即投资</div>
     </div>
