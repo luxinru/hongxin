@@ -6,7 +6,7 @@
       <div></div>
     </div>
     <div class="tips">
-      {{ title == '充值详情' ? '充值金额(元）' : '账户余额(元）' }}
+      {{ title == '充值详情' ? '本次充值金额(元）' : '账户余额(元）' }}
     </div>
     <div class="money">{{ money }}</div>
   </div>
