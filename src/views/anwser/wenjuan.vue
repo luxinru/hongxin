@@ -6,7 +6,7 @@
         <img src="@/assets/hongxin/1-5 答题_slices/logo.png" alt="" />
         <div>
           <span>答题请勿退出</span>
-          <span>弘信为你加油</span>
+          <span>弘信为您加油</span>
         </div>
       </div>
     </div>
