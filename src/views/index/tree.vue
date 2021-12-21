@@ -91,7 +91,7 @@
           <!-- <div class="title">绑定支付宝</div>
           <span>绑定支付宝，额外奖金</span> -->
         </div>
-        <div class="bottom" @click="handleTreeListItemClick(13)">
+        <div class="bottom" @click="handleTreeListItemClick(1)">
           <!-- <div class="title">邀请福利</div>
           <span>现金多多</span> -->
         </div>

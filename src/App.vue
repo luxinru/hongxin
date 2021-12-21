@@ -67,6 +67,17 @@
         <span :class="{active: show_type == 'mission'}">打卡</span>
       </router-link>
 
+      <router-link class="footer_item" to="/information">
+        <img
+          :src="
+            show_type == 'information'
+              ? require('@/assets/hongxin/1-1 首页_slices/资讯 (1).png')
+              : require('@/assets/hongxin/1-1 首页_slices/资讯 (1) 拷贝.png')
+          "
+        />
+        <span :class="{active: show_type == 'information'}">资讯</span>
+      </router-link>
+
       <router-link class="footer_item" to="/user">
         <img
           :src="
@@ -108,6 +119,16 @@
           "
         />
         <span :class="{active: show_type == 'index'}">打卡</span>
+      </router-link>
+      <router-link class="footer_item" to="/information">
+        <img
+          :src="
+            show_type == 'information'
+              ? require('@/assets/hongxin/1-1 首页_slices/资讯 (1).png')
+              : require('@/assets/hongxin/1-1 首页_slices/资讯 (1) 拷贝.png')
+          "
+        />
+        <span :class="{active: show_type == 'information'}">资讯</span>
       </router-link>
       <router-link class="footer_item" to="/user">
         <img

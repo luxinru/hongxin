@@ -393,6 +393,13 @@ export default new Router({
     },
 
     {
+      path: "/information",
+      name: "information",
+      component: () =>
+        import( /* webpackChunkName: "home" */ "./views/index/information.vue")
+    },
+
+    {
       path: "/goods",
       name: "goods",
       meta: {
