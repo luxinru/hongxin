@@ -1,10 +1,10 @@
 <template>
-  <div class="page_root">
+  <div class="page_root item_root">
     <section class="banner">
       <van-swipe @change="onChange" :autoplay="5000">
         <van-swipe-item v-for="(image, index) in banner" :key="index">
           <img
-            style="width:100%;height: 100%;"
+            style="width: 100%; height: 100%"
             :src="image.thumb"
             @click="$router.push({ path: image.url.replace('#/', '') })"
           />
@@ -18,15 +18,24 @@
         <span>站内信</span>
       </div>
       <div class="item" @click="$router.push('qiandao')">
-        <img src="@/assets/hongxin/3-1 理财_slices/icon-签到福利@2x.png" alt="" />
+        <img
+          src="@/assets/hongxin/3-1 理财_slices/icon-签到福利@2x.png"
+          alt=""
+        />
         <span>签到福利</span>
       </div>
       <div class="item" @click="$router.push('rookie')">
-        <img src="@/assets/hongxin/3-1 理财_slices/icon-新手指引@2x.png" alt="" />
+        <img
+          src="@/assets/hongxin/3-1 理财_slices/icon-新手指引@2x.png"
+          alt=""
+        />
         <span>新手指引</span>
       </div>
       <div class="item" @click="$router.push('jackpot')">
-        <img src="@/assets/hongxin/3-1 理财_slices/icon-活动红包@2x.png" alt="" />
+        <img
+          src="@/assets/hongxin/3-1 理财_slices/icon-活动红包@2x.png"
+          alt=""
+        />
         <span>我的券包</span>
       </div>
     </section>
@@ -38,7 +47,7 @@
         :text="horn_msg"
       >
         <template #left-icon>
-          <img src="@/assets/hongxin/3-1 理财_slices/最新公告@2x.png" alt="">
+          <img src="@/assets/hongxin/3-1 理财_slices/最新公告@2x.png" alt="" />
         </template>
       </van-notice-bar>
     </section>
@@ -70,8 +79,12 @@
         <span :class="{active: projectType === 2}" @click="projectType = 2">体验项目</span>
       </div> -->
       <template v-for="(item, index) in list">
-        <div :key="item.id" @click="goToDetail(item.id)" :class="index === 0 ? 'item' : 'item item_border'">
-            <InvestItem :invest-info="item"></InvestItem>
+        <div
+          :key="item.id"
+          @click="goToDetail(item.id)"
+          :class="index === 0 ? 'item' : 'item item_border'"
+        >
+          <InvestItem :invest-info="item"></InvestItem>
         </div>
       </template>
     </section>
@@ -81,14 +94,14 @@
 <script>
 import Fetch from '../../utils/fetch'
 import { Dialog } from 'vant'
-import InvestItem from "@/views/item/compoents/InvestItem.vue";
+import InvestItem from '@/views/item/compoents/InvestItem.vue'
 
 export default {
   name: 'index',
   components: {
-    InvestItem
+    InvestItem,
   },
-  data () {
+  data() {
     return {
       projectType: 1, // 1 || 2
       playerOptions: {
@@ -103,8 +116,8 @@ export default {
         sources: [
           {
             src: 'https://rcguanjia.com/mp4/zhufu.mp4', // 路径
-            type: 'video/mp4' // 类型
-          }
+            type: 'video/mp4', // 类型
+          },
         ],
         // poster: "https://www.njmbttd.com/upload/dongli.jpg", //你的封面地址
         // width: document.documentElement.clientWidth,
@@ -113,8 +126,8 @@ export default {
           timeDivider: true,
           durationDisplay: true,
           remainingTimeDisplay: false,
-          fullscreenToggle: true //全屏按钮
-        }
+          fullscreenToggle: true, //全屏按钮
+        },
       },
       list: [],
       data: { list: [] },
@@ -130,24 +143,24 @@ export default {
       notice_num: 1,
       currentRate: 0,
       active: 0,
-      tabStatus: ['正在进行', '已完成']
+      tabStatus: ['正在进行', '已完成'],
     }
   },
-  created () {
+  created() {
     this.$parent.footer(true, 'touzi')
   },
-  mounted () {
+  mounted() {
     this.start()
   },
   methods: {
-    onChange (index) {
+    onChange(index) {
       let els = this.$refs.dian.querySelectorAll('div')
       for (let i = 0; i < els.length; i++) {
         els[i].className = ''
       }
       els[index].className = 'selected'
     },
-    start () {
+    start() {
       // 修复个别手机不能滚动到顶端
       setTimeout(() => {
         var element = document.getElementById('app')
@@ -155,18 +168,18 @@ export default {
       }, 0)
       document.body.scrollTop = 0
       document.documentElement.scrollTop = 0
-      Fetch('/index/item').then(res => {
+      Fetch('/index/item').then((res) => {
         this.data = res.data
         this.filterList()
       })
 
       Fetch('/index/banner_activity', {
-        type: 'banner'
-      }).then(res => {
+        type: 'banner',
+      }).then((res) => {
         this.banner = res.data
       })
 
-      Fetch('/index/tree').then(res => {
+      Fetch('/index/tree').then((res) => {
         // 首页公告 图标
         if (res.data.notice && this.notice_num == 1) {
           this.notice_num = 2
@@ -183,21 +196,22 @@ export default {
     // 		width: schedule + '%'
     // 	};
     // },
-    filterList () {
+    filterList() {
       if (this.active) {
-        this.list = this.data.list.filter(item => item.schedule === 100)
+        this.list = this.data.list.filter((item) => item.schedule === 100)
       } else {
-        this.list = this.data.list.filter(item => item.schedule < 100)
+        this.list = this.data.list.filter((item) => item.schedule < 100)
       }
     },
-    goToDetail (id) {
+    goToDetail(id) {
       // this.$router.replace('/item/' + id);
       this.$router.push('/item/' + id)
     },
-    move () {
+    move() {
       var m_l = 50
-      var width = document.getElementById('horn_go1').getBoundingClientRect()
-        .width
+      var width = document
+        .getElementById('horn_go1')
+        .getBoundingClientRect().width
       var box = document.getElementById('horn_go1')
       var box2 = document.getElementById('horn_go2')
       box2.style.left = width + m_l + 'px'
@@ -219,26 +233,26 @@ export default {
         box2.style.left = distance2 + 'px'
       }, 40)
     },
-    schedule_left (schedule) {
+    schedule_left(schedule) {
       if (schedule > 80) {
         return {
           left: schedule - 30 + '%',
-          color: '#fff'
+          color: '#fff',
         }
       } else {
         return {
-          left: schedule.slice(0, 5) + '%'
+          left: schedule.slice(0, 5) + '%',
         }
       }
     },
-    checkin2 () {
-      Fetch('/user/sign').then(res => {
+    checkin2() {
+      Fetch('/user/sign').then((res) => {
         if (res.data.coss == 1) {
           Dialog.alert({
             title: '提示',
             message: res.info,
             showCancelButton: true,
-            confirmButtonText: '去认证'
+            confirmButtonText: '去认证',
           })
             .then(() => {
               this.$router.push('/auth')
@@ -249,12 +263,12 @@ export default {
           this.new_sign_ok = true
           this.$notify({
             background: '#07c160',
-            message: '签到成功：已获得现金2元和8积分！'
+            message: '签到成功：已获得现金2元和8积分！',
           })
         }
       })
     },
-    handleTreeListItemClick (type = 1) {
+    handleTreeListItemClick(type = 1) {
       switch (type) {
         case 1:
           this.checkin2()
@@ -296,8 +310,8 @@ export default {
           this.$router.push({ name: 'share' })
           break
       }
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -306,8 +320,10 @@ export default {
 </style>
 
 <style lang="less">
-.van-swipe {
-  height: 240px;
+.item_root {
+  .van-swipe {
+    height: 240px;
+  }
 }
 
 .van-notice-bar {

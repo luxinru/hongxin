@@ -1,5 +1,5 @@
 <template>
-  <div class="page_root">
+  <div class="page_root tree_root">
     <section class="header">
       <img
         class="logo"
@@ -427,8 +427,10 @@ export default {
 </style>
 
 <style lang="less">
-.van-swipe {
-  height: 152px;
+.tree_root {
+  .van-swipe {
+    height: 152px;
+  }
 }
 
 .van-notice-bar {
