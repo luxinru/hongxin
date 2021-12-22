@@ -35,16 +35,18 @@
         />
         <span :class="{active: show_type == 'tree'}">首页</span>
       </router-link>
-      <router-link class="footer_item" to="/goods">
+
+      <router-link class="footer_item" to="/information">
         <img
           :src="
-            show_type == 'goods'
-              ? require('@/assets/hongxin/1-1 首页_slices/积分P@2x.png')
-              : require('@/assets/hongxin/1-1 首页_slices/积分N@2x.png')
+            show_type == 'information'
+              ? require('@/assets/hongxin/1-1 首页_slices/资讯 (1).png')
+              : require('@/assets/hongxin/1-1 首页_slices/资讯 (1) 拷贝.png')
           "
         />
-        <span :class="{active: show_type == 'goods'}">积分</span>
+        <span :class="{active: show_type == 'information'}">资讯</span>
       </router-link>
+      
       <router-link class="footer_item" to="/item">
         <img
           :src="
@@ -67,15 +69,15 @@
         <span :class="{active: show_type == 'index'}">打卡</span>
       </router-link>
 
-      <router-link class="footer_item" to="/information">
+      <router-link class="footer_item" to="/goods">
         <img
           :src="
-            show_type == 'information'
-              ? require('@/assets/hongxin/1-1 首页_slices/资讯 (1).png')
-              : require('@/assets/hongxin/1-1 首页_slices/资讯 (1) 拷贝.png')
+            show_type == 'goods'
+              ? require('@/assets/hongxin/1-1 首页_slices/积分P@2x.png')
+              : require('@/assets/hongxin/1-1 首页_slices/积分N@2x.png')
           "
         />
-        <span :class="{active: show_type == 'information'}">资讯</span>
+        <span :class="{active: show_type == 'goods'}">积分</span>
       </router-link>
 
       <router-link class="footer_item" to="/user">
@@ -100,26 +102,7 @@
         />
         <span :class="{active: show_type == 'tree'}">首页</span>
       </router-link>
-      <router-link class="footer_item" to="/goods">
-        <img
-          :src="
-            show_type == 'goods'
-              ? require('@/assets/hongxin/1-1 首页_slices/积分P@2x.png')
-              : require('@/assets/hongxin/1-1 首页_slices/积分N@2x.png')
-          "
-        />
-        <span :class="{active: show_type == 'goods'}">积分</span>
-      </router-link>
-      <router-link class="footer_item" to="/index">
-        <img
-          :src="
-            show_type == 'index'
-              ? require('@/assets/hongxin/1-1 首页_slices/打卡P@2x.png')
-              : require('@/assets/hongxin/1-1 首页_slices/打卡N@2x.png')
-          "
-        />
-        <span :class="{active: show_type == 'index'}">打卡</span>
-      </router-link>
+
       <router-link class="footer_item" to="/information">
         <img
           :src="
@@ -130,6 +113,29 @@
         />
         <span :class="{active: show_type == 'information'}">资讯</span>
       </router-link>
+      
+      <router-link class="footer_item" to="/index">
+        <img
+          :src="
+            show_type == 'index'
+              ? require('@/assets/hongxin/1-1 首页_slices/打卡P@2x.png')
+              : require('@/assets/hongxin/1-1 首页_slices/打卡N@2x.png')
+          "
+        />
+        <span :class="{active: show_type == 'index'}">打卡</span>
+      </router-link>
+
+      <router-link class="footer_item" to="/goods">
+        <img
+          :src="
+            show_type == 'goods'
+              ? require('@/assets/hongxin/1-1 首页_slices/积分P@2x.png')
+              : require('@/assets/hongxin/1-1 首页_slices/积分N@2x.png')
+          "
+        />
+        <span :class="{active: show_type == 'goods'}">积分</span>
+      </router-link>
+      
       <router-link class="footer_item" to="/user">
         <img
           :src="
