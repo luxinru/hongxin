@@ -9,6 +9,8 @@
         您已成功打卡<span>{{ qiandaoNum }}</span
         >天
       </div>
+      
+      <div class="commit" @click="checkin2">立即签到</div>
 
       <section class="good_list">
         <div class="title">签到好礼</div>
@@ -313,8 +315,17 @@ export default {
     }
   }
 
+  .commit {
+    margin-top: 20px;
+    font-size: 12px;
+    padding: 4px 12px;
+    background: #FFDF3B;
+    border-radius: 50px;
+    color: rgba(0, 0, 0, 0.7)
+  }
+
   .good_list {
-    margin-top: 63px;
+    margin-top: 20px;
     width: 100%;
     flex: 1 0;
     display: flex;
