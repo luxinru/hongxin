@@ -133,6 +133,7 @@ export default {
               font-size: 13px;
               font-weight: 400;
               color: #B9B9B9;
+              margin-top: 16px;
             }
           }
         }

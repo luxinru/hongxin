@@ -12,7 +12,7 @@
         <img src="@/assets/images/shufeng/task/task2.png" alt="">
         <div class="info">
           <span>连续打卡</span>
-          <span>连续打卡赢奖金</span>
+          <span>连续打卡领礼品</span>
         </div>
         <div
           class="btn"
@@ -27,7 +27,7 @@
         <img src="@/assets/images/shufeng/task/task3.png" alt="">
         <div class="info">
           <span>邀请好友</span>
-          <span>领取5元红包</span>
+          <span>{{ footer_type === 'n2' ? '获得投资返利' : '获得200积分' }}</span>
         </div>
         <div
           class="btn"
@@ -57,7 +57,7 @@
         <img src="@/assets/images/shufeng/task/task5.png" alt="">
         <div class="info">
           <span>新人认证</span>
-          <span>奖励500积分</span>
+          <span>{{ footer_type === 'n2' ? '奖励三元现金' : '获得3元现金红包' }}</span>
         </div>
         <div
           class="btn"
@@ -72,7 +72,7 @@
         <img src="@/assets/images/shufeng/task/task6.png" alt="">
         <div class="info">
           <span>参与投资</span>
-          <span>奖励500积分</span>
+          <span>获取海量积分</span>
         </div>
         <div
           class="btn"

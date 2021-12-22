@@ -316,8 +316,8 @@ export default {
   }
 
   .commit {
-    margin-top: 20px;
-    font-size: 12px;
+    margin-top: 18px;
+    font-size: 16px;
     padding: 4px 12px;
     background: #FFDF3B;
     border-radius: 50px;

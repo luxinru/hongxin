@@ -59,12 +59,12 @@
       <router-link class="footer_item" to="/index">
         <img
           :src="
-            show_type == 'mission'
+            show_type == 'index'
               ? require('@/assets/hongxin/1-1 首页_slices/打卡P@2x.png')
               : require('@/assets/hongxin/1-1 首页_slices/打卡N@2x.png')
           "
         />
-        <span :class="{active: show_type == 'mission'}">打卡</span>
+        <span :class="{active: show_type == 'index'}">打卡</span>
       </router-link>
 
       <router-link class="footer_item" to="/information">
