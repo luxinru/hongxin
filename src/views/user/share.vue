@@ -133,7 +133,7 @@ export default {
   width: 100%;
   padding: 0 16px;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(238, 217, 25, 0.6);
   line-height: 24px;
 }
 // .main-cont {
