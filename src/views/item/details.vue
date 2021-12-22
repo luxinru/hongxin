@@ -16,10 +16,14 @@
       <div class="project-name">{{ data.title }}</div>
       <img :src="data.thumb" alt="" />
       <div class="project-tag-box">
-        <div class="project-tag-item bq1">{{ data.type_name }}</div>
-        <div class="project-tag-item bq2">{{ data.min }}起投</div>
-        <div class="project-tag-item bq3">项目规模：{{ data.total }}万元</div>
-        <div class="project-tag-item bq2">投资期限: {{ data.day }}天</div>
+        <div class="item">
+          <div class="project-tag-item bq1">{{ data.type_name }}</div>
+          <div class="project-tag-item bq3">项目规模：{{ data.total }}万元</div>
+        </div>
+        <div class="item">
+          <div class="project-tag-item bq2">{{ data.min }}起投</div>
+          <div class="project-tag-item bq2">投资期限: {{ data.day }}天</div>
+        </div>
       </div>
       <div class="project-info-list">
         <div class="project-info-list-item">
@@ -199,8 +203,8 @@
     <!--<div style="margin-top:20px;margin-bottom:20px;"><img :src="data.thumb3" alt="" style="width:100%;"></div>-->
     <!--投资按钮-->
     <div class="project-other-info-box imgBox">
-       <img v-if="data.thumb" :src="data.thumb" alt="" srcset="">
-       <!-- <img v-if="data.thumb2" :src="data.thumb2" alt="" srcset="">
+      <img v-if="data.thumb" :src="data.thumb2" alt="" srcset="" />
+      <!-- <img v-if="data.thumb2" :src="data.thumb2" alt="" srcset="">
        <img v-if="data.thumb3" :src="data.thumb3" alt="" srcset="">
        <img v-if="data.thumb4" :src="data.thumb4" alt="" srcset="">
        <img v-if="data.thumb5" :src="data.thumb5" alt="" srcset=""> -->
