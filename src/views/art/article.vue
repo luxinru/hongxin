@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page_root">
     <div class="header">
       <div class="head">
         <van-icon name="arrow-left" class="back" @click="$router.back()" />
@@ -11,7 +11,6 @@
         <vue-editor v-model="content" style="display: none" />
         <div
           class="contract_box ql-editor"
-          style="width: 100%; margin：20px"
           v-html="content"
         ></div>
       </div>
@@ -59,20 +58,39 @@ export default {
 </script>
 
 <style scoped>
-/deep/ .ql-editor {
-  padding: 5px;
+.page_root {
+  padding: 0;
+}
+.ql-editor {
+  width: 100%;
+  height: 100%;
+}
+
+.main {
+  width: 100%;
+  height: calc(100% - 48px);
+  overflow: scroll;
 }
 
 .box {
-  width: 90%;
-  margin: 20px;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   border-radius: 12px;
   background: #fff;
 }
 
+.box >>> p {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .box >>> img {
-  max-width: 100%;
+  width: 100%;
+  min-height: 345px;
 }
 
 .box .item {

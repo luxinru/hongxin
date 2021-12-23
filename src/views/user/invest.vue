@@ -1,7 +1,7 @@
 <template>
   <div class="page_root">
     <div class="boxFun">
-      <div class="container" v-for="(item, key) in data.list" :key="key">
+      <div class="boxFun_container" v-for="(item, key) in data.list" :key="key">
         <div class="left">
           <div class="title">{{ item.type }}</div>
         </div>
