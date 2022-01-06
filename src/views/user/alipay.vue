@@ -10,7 +10,7 @@
           <input
             type="text"
             v-model.trim="data.name"
-            :readonly="data.is_auth === 'Y'"
+            :readonly="data.is_alipay === 'Y'"
             placeholder="请输入您的姓名"
           />
         </div>
@@ -22,12 +22,12 @@
           <input
             type="text"
             v-model.trim="data.alipay"
-            :readonly="data.is_auth === 'Y'"
+            :readonly="data.is_alipay === 'Y'"
             placeholder="请输入您的支付宝账号"
           />
         </div>
 
-        <Btn v-if="data.is_alipay !== 'N'" background="rgba(47, 128, 237, 1)" @click="handleSubmit">立即绑定</Btn>
+        <Btn v-if="data.is_alipay === 'N'" background="rgba(47, 128, 237, 1)" @click="handleSubmit">立即绑定</Btn>
       </form>
     </div>
     <div class="recharge-remark-box">

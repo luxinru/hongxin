@@ -10,10 +10,13 @@
         <van-field
           v-model="money"
           @input="changeInput()"
-          type="text"
+          readonly
+          type="number"
           label-class="transaction-input"
           placeholder="请输入金额"
         />
+        <span @click="setNum(Number(data.min))">+</span>
+        <span style="margin-left: 24px;" @click="setNum(Number(data.min), 2)">-</span>
       </div>
     </div>
     <div class="zhye">
@@ -85,15 +88,20 @@ export default {
     this.start()
   },
   methods: {
-    setNum(num) {
-      this.money = Number(this.money) + num
+    setNum(num, type = 1) {
+      if (type === 1) {
+        this.money = Number(this.money) + num;
+      } else {
+        this.money = Number(this.money) - num;
+      }
+      this.changeInput()
     },
     start() {
       Fetch('/index/item_view', {
         id: this.id,
       }).then((res) => {
         this.data = res.data.view
-        this.money = res.data.view.min
+        this.money = Number(res.data.view.min)
         Fetch('/user/get_item_voucher', {
           id: this.id,
         }).then((r) => {
@@ -140,7 +148,7 @@ export default {
         this.real_money = this.money - this.j_money
         this.real_jifen = Math.floor(this.money * this.data.jfbl)
       } else {
-        this.money += this.data.min
+        this.money = Number(this.data.min)
       }
     },
     // 忘记密码
