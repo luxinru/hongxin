@@ -39,7 +39,7 @@ export default async (url, data, opt, isLoad = true) => {
     //url = "http://sh.com/api"+url;
     //url = "https://ybqjy.com/api"+url;
     // url = "https://haoxlb.com/api"+url;
-    url = 'http://hongxin.cslflq.com/api' + url
+    url = 'https://hongxin.cslflq.com/api' + url
     // var host = 'https://' + window.location.host;
     // url = host+"/api"+url;
   }
