@@ -1,7 +1,7 @@
 <template>
   <div class="page_root item_root">
     <section class="banner">
-      <van-swipe @change="onChange" :autoplay="5000">
+      <!-- <van-swipe @change="onChange" :autoplay="5000">
         <van-swipe-item v-for="(image, index) in banner" :key="index">
           <img
             style="width: 100%; height: 100%"
@@ -9,7 +9,8 @@
             @click="$router.push({ path: image.url.replace('#/', '') })"
           />
         </van-swipe-item>
-      </van-swipe>
+      </van-swipe> -->
+      <video autoplay loop src="@/views/item/mp4/IMG_0373.mp4"></video>
     </section>
 
     <section class="fuc_bar">
